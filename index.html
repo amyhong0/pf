@@ -42,6 +42,13 @@
       margin-top: 30px;
       font-size: 1.5rem;
       font-weight: 600;
+      display: flex;
+      align-items: baseline;
+    }
+    h3 .project-number {
+      color: #0052cc;
+      font-weight: 700;
+      margin-right: 10px;
     }
     p, li {
       line-height: 1.7;
@@ -62,12 +69,6 @@
     }
     .project:hover {
       box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    }
-    .project h3 {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 700;
     }
     .project-meta {
       font-size: 0.95rem;
@@ -98,7 +99,7 @@
     }
     .project-image {
       max-width: 100%;
-      margin-top: 20px;
+      margin-top: 10px;
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
@@ -139,6 +140,12 @@
     .image-gallery-vertical img:hover {
       transform: scale(1.03);
     }
+    .image-title {
+      margin-top: 20px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #0052cc;
+    }
   </style>
 </head>
 <body>
@@ -151,19 +158,17 @@
       <li><strong>직무:</strong> Prompt Engineer, AI Engineer, Data Analyst</li>
       <li><strong>관심 분야:</strong> 생성형 AI, 데이터 분석</li>
       <li><strong>소개:</strong> AI 기반 서비스 개발에 관심이 많으며, 프롬프트 엔지니어링과 자동화 워크플로우 구축 경험이 있습니다.</li>
-      <li><strong>이메일:</strong> <a href="mailto:heywon16@gmail.com">heywon16@gmail.com</a></li>
     </ul>
 
     <h2>프로젝트</h2>
 
     <!-- 1. 게임 아이템 설명 자동화 프로젝트 -->
     <div class="project">
-      <h3>
-        게임 아이템 설명 자동화 프로젝트
+      <h3><span class="project-number">1.</span> 게임 아이템 설명 자동화 프로젝트
         <span class="project-meta">2025.05</span>
       </h3>
       <ul>
-        <li><strong>역할:</strong> 프롬프트 엔지니어링, 자동화 스크립트 개발</li>
+        <li><strong>역할:</strong> 프롬프트 엔지니어링, 자동화 script 개발</li>
         <li><strong>주요 내용:</strong>
           <ul>
             <li>생성형 AI(Gemini API)를 활용해 게임 아이템 설명을 자동 생성</li>
@@ -182,13 +187,13 @@
           </ul>
         </li>
       </ul>
+      <div class="image-title">결과 화면</div>
       <img src="gameitem_result.png" alt="게임 아이템 설명 자동화 결과" class="project-image" />
     </div>
 
     <!-- 2. 몽글몽글 – 꿈 기반 스토리 및 이미지 생성 서비스 -->
     <div class="project">
-      <h3>
-        몽글몽글 – 꿈 기반 스토리 및 이미지 생성 서비스
+      <h3><span class="project-number">2.</span> 몽글몽글 – 꿈 기반 스토리 및 이미지 생성 서비스
         <span class="project-meta">2024.12 ~ 2025.01 / 마이크로소프트</span>
       </h3>
       <ul>
@@ -211,8 +216,9 @@
           </ul>
         </li>
       </ul>
+      <div class="image-title">아키텍처</div>
       <img src="몽글몽글_architecture.png" alt="몽글몽글 아키텍처" class="project-image" />
-      <h4>서비스 화면</h4>
+      <div class="image-title">서비스 화면</div>
       <div class="image-gallery-horizontal">
         <img src="몽글몽글_result1.png" alt="몽글몽글 서비스 화면 1" />
         <img src="몽글몽글_result2.png" alt="몽글몽글 서비스 화면 2" />
@@ -225,8 +231,7 @@
 
     <!-- 3. 마쉴랭 – 주류 추천 서비스 개발 -->
     <div class="project">
-      <h3>
-        마쉴랭 – 주류 추천 서비스 개발
+      <h3><span class="project-number">3.</span> 마쉴랭 – 주류 추천 서비스 개발
         <span class="project-meta">2024.11 ~ 2024.12 / 마이크로소프트</span>
       </h3>
       <ul>
@@ -248,17 +253,18 @@
           </ul>
         </li>
       </ul>
-      <div class="image-gallery-vertical">
-        <img src="마쉴랭_architecture.png" alt="마쉴랭 아키텍처" />
-        <img src="마쉴랭_cv_eval.png" alt="마쉴랭 Custom Vision 평가" />
-        <img src="마쉴랭_result.png" alt="마쉴랭 결과" />
-      </div>
+      <div class="image-title">아키텍처</div>
+      <img src="마쉴랭_architecture.png" alt="마쉴랭 아키텍처" class="project-image" />
+      <div class="image-title">Custom Vision 평가</div>
+      <img src="마쉴랭_cv_eval.png" alt="마쉴랭 Custom Vision 평가" class="project-image" />
+      <div class="image-title">서비스 화면</div>
+      <img src="마쉴랭_result.png" alt="마쉴랭 결과" class="project-image" />
     </div>
 
     <div class="contact">
       <h2>연락처</h2>
       <ul>
-        <li><strong>GitHub:</strong> <a href="https://github.com/[GitHub아이디]" target="_blank">https://github.com/[GitHub아이디]</a></li>
+        <li><strong>이메일:</strong> <a href="mailto:heywon16@gmail.com">heywon16@gmail.com</a></li>
       </ul>
     </div>
   </div>
