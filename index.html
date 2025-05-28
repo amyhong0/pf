@@ -9,85 +9,135 @@
       font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f8f9fa;
-      color: #333;
+      background: #f0f2f5;
+      color: #222;
     }
     .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 30px;
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 40px 50px;
       background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border: 1px solid #e1e4e8;
     }
     h1 {
-      color: #0066cc;
-      margin-bottom: 30px;
-      border-bottom: 2px solid #0066cc;
-      padding-bottom: 10px;
+      color: #0052cc;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #0052cc;
+      padding-bottom: 12px;
+      font-weight: 700;
+      font-size: 2.8rem;
     }
     h2 {
-      color: #0066cc;
-      margin-top: 30px;
-      padding-bottom: 5px;
+      color: #0052cc;
+      margin-top: 50px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #cce0ff;
+      font-weight: 600;
+      font-size: 2rem;
     }
     h3 {
-      color: #555;
-      margin-top: 25px;
-      font-size: 1.3em;
+      color: #444;
+      margin-top: 30px;
+      font-size: 1.5rem;
+      font-weight: 600;
     }
     p, li {
-      line-height: 1.6;
+      line-height: 1.7;
+      font-size: 1.1rem;
+      color: #333;
     }
     ul {
-      padding-left: 20px;
+      padding-left: 24px;
     }
     .project {
-      margin-bottom: 40px;
+      margin-bottom: 60px;
+      padding: 30px 25px;
+      background: #f9fbff;
+      border-radius: 12px;
+      border: 1px solid #dbe4f7;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease;
+    }
+    .project:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
     }
     .project h3 {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-weight: 700;
     }
     .project-meta {
-      font-size: 0.9em;
-      color: #777;
+      font-size: 0.95rem;
+      color: #666;
+      font-weight: 500;
     }
     .tools {
-      background: #e9f7fe;
-      padding: 10px 15px;
-      border-radius: 6px;
-      margin-top: 10px;
+      background: #e6f0ff;
+      padding: 12px 18px;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-weight: 500;
+      color: #0047b3;
+      font-size: 1rem;
     }
     .contact {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #ddd;
+      margin-top: 60px;
+      padding-top: 25px;
+      border-top: 2px solid #cce0ff;
     }
     .contact a {
-      color: #0066cc;
+      color: #0052cc;
       text-decoration: none;
+      font-weight: 600;
     }
     .contact a:hover {
       text-decoration: underline;
     }
     .project-image {
       max-width: 100%;
-      margin-top: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-top: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
     }
-    .image-gallery {
+    .project-image:hover {
+      transform: scale(1.03);
+    }
+    .image-gallery-horizontal {
+      margin-top: 20px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 15px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 12px;
+      padding-bottom: 10px;
     }
-    .image-gallery img {
-      width: calc(33% - 10px);
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    .image-gallery-horizontal img {
+      height: 180px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .image-gallery-horizontal img:hover {
+      transform: scale(1.05);
+    }
+    .image-gallery-vertical {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .image-gallery-vertical img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .image-gallery-vertical img:hover {
+      transform: scale(1.03);
     }
   </style>
 </head>
@@ -109,7 +159,7 @@
     <!-- 1. 게임 아이템 설명 자동화 프로젝트 -->
     <div class="project">
       <h3>
-        1. 게임 아이템 설명 자동화 프로젝트
+        게임 아이템 설명 자동화 프로젝트
         <span class="project-meta">2025.05</span>
       </h3>
       <ul>
@@ -138,7 +188,7 @@
     <!-- 2. 몽글몽글 – 꿈 기반 스토리 및 이미지 생성 서비스 -->
     <div class="project">
       <h3>
-        2. 몽글몽글 – 꿈 기반 스토리 및 이미지 생성 서비스
+        몽글몽글 – 꿈 기반 스토리 및 이미지 생성 서비스
         <span class="project-meta">2024.12 ~ 2025.01 / 마이크로소프트</span>
       </h3>
       <ul>
@@ -161,8 +211,9 @@
           </ul>
         </li>
       </ul>
-      <div class="image-gallery">
-        <img src="몽글몽글_architecture.png" alt="몽글몽글 아키텍처" />
+      <img src="몽글몽글_architecture.png" alt="몽글몽글 아키텍처" class="project-image" />
+      <h4>서비스 화면</h4>
+      <div class="image-gallery-horizontal">
         <img src="몽글몽글_result1.png" alt="몽글몽글 서비스 화면 1" />
         <img src="몽글몽글_result2.png" alt="몽글몽글 서비스 화면 2" />
         <img src="몽글몽글_result3.png" alt="몽글몽글 서비스 화면 3" />
@@ -175,7 +226,7 @@
     <!-- 3. 마쉴랭 – 주류 추천 서비스 개발 -->
     <div class="project">
       <h3>
-        3. 마쉴랭 – 주류 추천 서비스 개발
+        마쉴랭 – 주류 추천 서비스 개발
         <span class="project-meta">2024.11 ~ 2024.12 / 마이크로소프트</span>
       </h3>
       <ul>
@@ -197,7 +248,7 @@
           </ul>
         </li>
       </ul>
-      <div class="image-gallery">
+      <div class="image-gallery-vertical">
         <img src="마쉴랭_architecture.png" alt="마쉴랭 아키텍처" />
         <img src="마쉴랭_cv_eval.png" alt="마쉴랭 Custom Vision 평가" />
         <img src="마쉴랭_result.png" alt="마쉴랭 결과" />
