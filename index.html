@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[홍혜원] 포트폴리오</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #0066cc;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #0066cc;
+      padding-bottom: 10px;
+    }
+    h2 {
+      color: #0066cc;
+      margin-top: 30px;
+      padding-bottom: 5px;
+    }
+    h3 {
+      color: #555;
+      margin-top: 25px;
+      font-size: 1.3em;
+    }
+    p, li {
+      line-height: 1.6;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .project {
+      margin-bottom: 40px;
+    }
+    .project h3 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .project-meta {
+      font-size: 0.9em;
+      color: #777;
+    }
+    .tools {
+      background: #e9f7fe;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+    .contact {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+    }
+    .contact a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .contact a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>[홍혜원] 포트폴리오</h1>
+
+    <h2>프로필</h2>
+    <ul>
+      <li><strong>직무:</strong> Prompt Engineer, AI Engineer, Data Analyst</li>
+      <li><strong>관심 분야:</strong> 생성형 AI, 데이터 분석</li>
+      <li><strong>소개:</strong> AI 기반 서비스 개발에 관심이 많으며, 프롬프트 엔지니어링과 자동화 워크플로우 구축 경험이 있습니다.</li>
+    </ul>
+
+    <h2>프로젝트</h2>
+
+    <div class="project">
+      <h3>
+        1. 게임 아이템 설명 자동화 프로젝트
+        <span class="project-meta">2025.05</span>
+      </h3>
+      <ul>
+        <li><strong>역할:</strong> 프롬프트 엔지니어링, 자동화 스크립트 개발</li>
+        <li><strong>주요 내용:</strong>
+          <ul>
+            <li>생성형 AI(Gemini API)를 활용해 게임 아이템 설명을 자동 생성</li>
+            <li>프롬프트 설계 및 최적화</li>
+            <li>결과를 Google Sheets에 자동 정리하는 워크플로우 구현</li>
+            <li>실제 게임 개발 프로세스에 바로 적용 가능한 간단한 자동화 경험</li>
+          </ul>
+        </li>
+        <div class="tools">
+          <strong>Tools:</strong> Python, Google Gemini API, Google Sheets API, Google Colab
+        </div>
+        <li><strong>성과:</strong>
+          <ul>
+            <li>반복적인 아이템 설명 작성 업무 자동화로 생산성 향상</li>
+            <li>프롬프트 엔지니어링 및 API 연동 경험 확보</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <h3>
+        2. 몽글몽글 – 꿈 기반 스토리 및 이미지 생성 서비스
+        <span class="project-meta">2024.12 ~ 2025.01 / 마이크로소프트</span>
+      </h3>
+      <ul>
+        <li><strong>역할:</strong> 프롬프트 엔지니어링, RAG 설계, DB 구축 및 Vector화, API 연동</li>
+        <li><strong>주요 내용:</strong>
+          <ul>
+            <li>사용자가 입력한 꿈 내용을 바탕으로 특정 장르의 스토리 및 이미지 생성</li>
+            <li>RAG(Retrieval-Augmented Generation) 구조 설계 및 구현</li>
+            <li>DB 및 Vector Storage 구축</li>
+            <li>Azure OpenAI, GPT-4o, DALL·E 연동</li>
+          </ul>
+        </li>
+        <div class="tools">
+          <strong>Tools:</strong> Azure OpenAI, Vector Storage, GPT-4o, DALL·E, RAG, Python, HTML, Flask, REST API
+        </div>
+        <li><strong>성과:</strong>
+          <ul>
+            <li>생성형 AI 기반 멀티모달 서비스 개발 경험</li>
+            <li>RAG 및 Vector DB 활용 경험</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <h3>
+        3. 마쉴랭 – 주류 추천 서비스 개발
+        <span class="project-meta">2024.11 ~ 2024.12 / 마이크로소프트</span>
+      </h3>
+      <ul>
+        <li><strong>역할:</strong> 팀장 겸 PM, 시장조사, DB 구축 및 정제, 머신러닝 모델(CustomVision) 구축</li>
+        <li><strong>주요 내용:</strong>
+          <ul>
+            <li>주류 제품 이미지를 분석하여 정보 제공 및 비슷한 취향의 주류 추천</li>
+            <li>Azure Custom Vision 기반 머신러닝 모델 구축</li>
+            <li>DB 및 Blob Storage 연동</li>
+          </ul>
+        </li>
+        <div class="tools">
+          <strong>Tools:</strong> Azure Custom Vision, Blob Storage, Python, Gradio
+        </div>
+        <li><strong>성과:</strong>
+          <ul>
+            <li>이미지 분석 및 추천 시스템 개발 경험</li>
+            <li>팀 리딩 및 프로젝트 관리 경험</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="contact">
+      <h2>연락처</h2>
+      <ul>
+        <li><strong>GitHub:</strong> <a href="https://github.com/[GitHub아이디]" target="_blank">https://github.com/amyhong0/pf</a></li>
+        <li><strong>이메일:</strong> <a href="mailto:[이메일주소]">heywon16@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
