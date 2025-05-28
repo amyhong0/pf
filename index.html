@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[홍혜원] 포트폴리오</title>
+  <title>홍혜원 포트폴리오</title>
   <style>
     body {
       font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
@@ -72,24 +72,44 @@
     .contact a:hover {
       text-decoration: underline;
     }
+    .project-image {
+      max-width: 100%;
+      margin-top: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .image-gallery img {
+      width: calc(33% - 10px);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>[홍혜원] 포트폴리오</h1>
+    <h1>홍혜원 포트폴리오</h1>
 
     <h2>프로필</h2>
     <ul>
+      <li><strong>이름:</strong> 홍혜원</li>
       <li><strong>직무:</strong> Prompt Engineer, AI Engineer, Data Analyst</li>
       <li><strong>관심 분야:</strong> 생성형 AI, 데이터 분석</li>
       <li><strong>소개:</strong> AI 기반 서비스 개발에 관심이 많으며, 프롬프트 엔지니어링과 자동화 워크플로우 구축 경험이 있습니다.</li>
+      <li><strong>이메일:</strong> <a href="mailto:heywon16@gmail.com">heywon16@gmail.com</a></li>
     </ul>
 
     <h2>프로젝트</h2>
 
+    <!-- 1. 게임 아이템 설명 자동화 프로젝트 -->
     <div class="project">
       <h3>
-        1. 게임 아이템 설명 자동화 프로젝트
+        게임 아이템 설명 자동화 프로젝트
         <span class="project-meta">2025.05</span>
       </h3>
       <ul>
@@ -112,11 +132,13 @@
           </ul>
         </li>
       </ul>
+      <img src="gameitem_result.png" alt="게임 아이템 설명 자동화 결과" class="project-image" />
     </div>
 
+    <!-- 2. 몽글몽글 – 꿈 기반 스토리 및 이미지 생성 서비스 -->
     <div class="project">
       <h3>
-        2. 몽글몽글 – 꿈 기반 스토리 및 이미지 생성 서비스
+        몽글몽글 – 꿈 기반 스토리 및 이미지 생성 서비스
         <span class="project-meta">2024.12 ~ 2025.01 / 마이크로소프트</span>
       </h3>
       <ul>
@@ -139,11 +161,21 @@
           </ul>
         </li>
       </ul>
+      <div class="image-gallery">
+        <img src="몽글몽글_architecture.png" alt="몽글몽글 아키텍처" />
+        <img src="몽글몽글_result1.png" alt="몽글몽글 서비스 화면 1" />
+        <img src="몽글몽글_result2.png" alt="몽글몽글 서비스 화면 2" />
+        <img src="몽글몽글_result3.png" alt="몽글몽글 서비스 화면 3" />
+        <img src="몽글몽글_result4.png" alt="몽글몽글 서비스 화면 4" />
+        <img src="몽글몽글_result5.png" alt="몽글몽글 서비스 화면 5" />
+        <img src="몽글몽글_result6.png" alt="몽글몽글 서비스 화면 6" />
+      </div>
     </div>
 
+    <!-- 3. 마쉴랭 – 주류 추천 서비스 개발 -->
     <div class="project">
       <h3>
-        3. 마쉴랭 – 주류 추천 서비스 개발
+        마쉴랭 – 주류 추천 서비스 개발
         <span class="project-meta">2024.11 ~ 2024.12 / 마이크로소프트</span>
       </h3>
       <ul>
@@ -165,13 +197,17 @@
           </ul>
         </li>
       </ul>
+      <div class="image-gallery">
+        <img src="마쉴랭_architecture.png" alt="마쉴랭 아키텍처" />
+        <img src="마쉴랭_cv_eval.png" alt="마쉴랭 Custom Vision 평가" />
+        <img src="마쉴랭_result.png" alt="마쉴랭 결과" />
+      </div>
     </div>
 
     <div class="contact">
       <h2>연락처</h2>
       <ul>
-        <li><strong>GitHub:</strong> <a href="https://github.com/[GitHub아이디]" target="_blank">https://github.com/amyhong0/pf</a></li>
-        <li><strong>이메일:</strong> <a href="mailto:[이메일주소]">heywon16@gmail.com</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/[GitHub아이디]" target="_blank">https://github.com/[GitHub아이디]</a></li>
       </ul>
     </div>
   </div>
