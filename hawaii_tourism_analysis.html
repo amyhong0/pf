@@ -1,0 +1,5326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1750d77ee241df90d687904c340b1131 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+            top: 10px; right: 10px; width: 280px; height: 160px; 
+            background-color: white; border:2px solid grey; z-index:9999; 
+            font-size:14px; padding: 15px; box-sizing: border-box;">
+<h4 style="margin-top:0; margin-bottom:10px; color: #333;">관광지 접근성 등급</h4>
+<p style="margin:5px 0;"><i class="fa fa-map-marker fa-2x" style="color:red"></i> 프리미엄 (15점 이상)</p>
+<p style="margin:5px 0;"><i class="fa fa-map-marker fa-2x" style="color:orange"></i> 일반 (10-14점)</p>
+<p style="margin:5px 0;"><i class="fa fa-map-marker fa-2x" style="color:blue"></i> 숨은명소 (10점 미만)</p>
+</div>
+    
+<div style="position: fixed; 
+            bottom: 10px; left: 10px; width: 320px; height: 100px; 
+            background-color: rgba(255,255,255,0.9); border:2px solid grey; z-index:9999; 
+            font-size:12px; padding: 15px; box-sizing: border-box;">
+<h5 style="margin-top:0; margin-bottom:8px; color: #333;">접근성 점수 기준</h5>
+<p style="margin:3px 0;">• 대중교통: 500m 내 버스정류장 (최대 10점)</p>
+<p style="margin:3px 0;">• 편의시설: 300m 내 카페/레스토랑 (최대 10점)</p>
+</div>
+    
+            <div class="folium-map" id="map_1750d77ee241df90d687904c340b1131" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_1750d77ee241df90d687904c340b1131 = L.map(
+                "map_1750d77ee241df90d687904c340b1131",
+                {
+                    center: [21.38674849051095, -157.8644928678832],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_527efb4d7e7a47cdee08e31984ca0262 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_527efb4d7e7a47cdee08e31984ca0262.addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var marker_b815703d4e5e8fd86178b9f00f4de91a = L.marker(
+                [21.2735058, -157.8236845],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_a2ad6a6949593261616a7addc57d38a2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8a809dc0a38bc0b2a19d24c7166e119b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ac41c331bc7f8c703f5ace212592f139 = $(`<div id="html_ac41c331bc7f8c703f5ace212592f139" style="width: 100.0%; height: 100.0%;">         <b>Damien and Marianne of Molokaʻi Education Center</b><br>         유형: museum<br>         접근성 점수: 20/20<br>         버스 정류장: 16개<br>         상업시설: 33개<br>         클러스터: 0         </div>`)[0];
+                popup_8a809dc0a38bc0b2a19d24c7166e119b.setContent(html_ac41c331bc7f8c703f5ace212592f139);
+            
+        
+
+        marker_b815703d4e5e8fd86178b9f00f4de91a.bindPopup(popup_8a809dc0a38bc0b2a19d24c7166e119b)
+        ;
+
+        
+    
+    
+                marker_b815703d4e5e8fd86178b9f00f4de91a.setIcon(icon_a2ad6a6949593261616a7addc57d38a2);
+            
+    
+            var marker_d609046862a0effddd65622bb0bfb93e = L.marker(
+                [21.3358254, -157.8394682],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_2ba3b70742f7e6794f2a806dc8dde949 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e544aadd0436d5642c5e679c016c49fd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5e1e9b144e9f8d26871e45da488020a3 = $(`<div id="html_5e1e9b144e9f8d26871e45da488020a3" style="width: 100.0%; height: 100.0%;">         <b>Queen Emma Summer Palace</b><br>         유형: museum<br>         접근성 점수: 10/20<br>         버스 정류장: 11개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_e544aadd0436d5642c5e679c016c49fd.setContent(html_5e1e9b144e9f8d26871e45da488020a3);
+            
+        
+
+        marker_d609046862a0effddd65622bb0bfb93e.bindPopup(popup_e544aadd0436d5642c5e679c016c49fd)
+        ;
+
+        
+    
+    
+                marker_d609046862a0effddd65622bb0bfb93e.setIcon(icon_2ba3b70742f7e6794f2a806dc8dde949);
+            
+    
+            var marker_e0abc0f641abf44240c27d673f947646 = L.marker(
+                [21.3670087, -157.793017],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_c2e67d801f485e3b2115e3b61dc9d7d7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_217f4475643f21b1afe68ddb369a4a70 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_07015435a34299dfd0366d5e3ddfbeae = $(`<div id="html_07015435a34299dfd0366d5e3ddfbeae" style="width: 100.0%; height: 100.0%;">         <b>Pali Lookout</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_217f4475643f21b1afe68ddb369a4a70.setContent(html_07015435a34299dfd0366d5e3ddfbeae);
+            
+        
+
+        marker_e0abc0f641abf44240c27d673f947646.bindPopup(popup_217f4475643f21b1afe68ddb369a4a70)
+        ;
+
+        
+    
+    
+                marker_e0abc0f641abf44240c27d673f947646.setIcon(icon_c2e67d801f485e3b2115e3b61dc9d7d7);
+            
+    
+            var marker_863e847c4129b0588e4a5f7473dc6485 = L.marker(
+                [21.2598056, -157.8117164],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_f6cb3b122a08a44e2ba5dda0f7442cab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a272aff784b3df72d0a55ffea74264cd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c6979efc9901af9e31c17df7c66ea335 = $(`<div id="html_c6979efc9901af9e31c17df7c66ea335" style="width: 100.0%; height: 100.0%;">         <b>Diamond Head Lookout</b><br>         유형: viewpoint<br>         접근성 점수: 10/20<br>         버스 정류장: 6개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_a272aff784b3df72d0a55ffea74264cd.setContent(html_c6979efc9901af9e31c17df7c66ea335);
+            
+        
+
+        marker_863e847c4129b0588e4a5f7473dc6485.bindPopup(popup_a272aff784b3df72d0a55ffea74264cd)
+        ;
+
+        
+    
+    
+                marker_863e847c4129b0588e4a5f7473dc6485.setIcon(icon_f6cb3b122a08a44e2ba5dda0f7442cab);
+            
+    
+            var marker_72247cc398c94929a99a6efbed819de6 = L.marker(
+                [21.2822906, -157.6767605],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_85a94335d04f1b1b01dbd4af15938c22 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_db1ec13f93ec98f18ba7d3db627401e1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_11cac863c41f24c45aae0d58b9c36e24 = $(`<div id="html_11cac863c41f24c45aae0d58b9c36e24" style="width: 100.0%; height: 100.0%;">         <b>Halona Blowhole Lookout</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_db1ec13f93ec98f18ba7d3db627401e1.setContent(html_11cac863c41f24c45aae0d58b9c36e24);
+            
+        
+
+        marker_72247cc398c94929a99a6efbed819de6.bindPopup(popup_db1ec13f93ec98f18ba7d3db627401e1)
+        ;
+
+        
+    
+    
+                marker_72247cc398c94929a99a6efbed819de6.setIcon(icon_85a94335d04f1b1b01dbd4af15938c22);
+            
+    
+            var marker_2beecfb8c4412ad5e4d6715053f55068 = L.marker(
+                [21.2712094, -157.8190429],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_ef2e4347517ff36ddf13d52720ad7093 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fed104267a3d7076fbd965ee2a41d5da = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_56e71e9699c0ae1c8ed0c2ce2e15b66a = $(`<div id="html_56e71e9699c0ae1c8ed0c2ce2e15b66a" style="width: 100.0%; height: 100.0%;">         <b>Tiger</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 19개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_fed104267a3d7076fbd965ee2a41d5da.setContent(html_56e71e9699c0ae1c8ed0c2ce2e15b66a);
+            
+        
+
+        marker_2beecfb8c4412ad5e4d6715053f55068.bindPopup(popup_fed104267a3d7076fbd965ee2a41d5da)
+        ;
+
+        
+    
+    
+                marker_2beecfb8c4412ad5e4d6715053f55068.setIcon(icon_ef2e4347517ff36ddf13d52720ad7093);
+            
+    
+            var marker_00baa763c241eedf845d4fc8f07c593d = L.marker(
+                [21.2700302, -157.8189152],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_fb0eac7e965589e59373a1afa9a29229 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1256137f994d6e4fe996aa2a80d0026e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fd2f4155f2c009bd02da9a4c01c6dbbf = $(`<div id="html_fd2f4155f2c009bd02da9a4c01c6dbbf" style="width: 100.0%; height: 100.0%;">         <b>Reptile House</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 20개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_1256137f994d6e4fe996aa2a80d0026e.setContent(html_fd2f4155f2c009bd02da9a4c01c6dbbf);
+            
+        
+
+        marker_00baa763c241eedf845d4fc8f07c593d.bindPopup(popup_1256137f994d6e4fe996aa2a80d0026e)
+        ;
+
+        
+    
+    
+                marker_00baa763c241eedf845d4fc8f07c593d.setIcon(icon_fb0eac7e965589e59373a1afa9a29229);
+            
+    
+            var marker_5f44121c377b8c328f838c381e5b2d19 = L.marker(
+                [21.2714394, -157.8195911],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_ee9fd5ff2d63d87cc5110cefe079900d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0c701c289a3a668a8d17bdc47a112701 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3c52aec2a58f286050389fd3e560fa11 = $(`<div id="html_3c52aec2a58f286050389fd3e560fa11" style="width: 100.0%; height: 100.0%;">         <b>Komodo Dragon</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 20개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_0c701c289a3a668a8d17bdc47a112701.setContent(html_3c52aec2a58f286050389fd3e560fa11);
+            
+        
+
+        marker_5f44121c377b8c328f838c381e5b2d19.bindPopup(popup_0c701c289a3a668a8d17bdc47a112701)
+        ;
+
+        
+    
+    
+                marker_5f44121c377b8c328f838c381e5b2d19.setIcon(icon_ee9fd5ff2d63d87cc5110cefe079900d);
+            
+    
+            var marker_e1dbba9b04740ae60b0b9ac7282429aa = L.marker(
+                [21.2698502, -157.8168435],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_e1c349aa3873740a11ef1b797be5554a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6c31beb853bc264cff99eb8485a806d4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_97eb2710b1caea5d966bb7f7890bf6fa = $(`<div id="html_97eb2710b1caea5d966bb7f7890bf6fa" style="width: 100.0%; height: 100.0%;">         <b>Flamingo</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 17개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_6c31beb853bc264cff99eb8485a806d4.setContent(html_97eb2710b1caea5d966bb7f7890bf6fa);
+            
+        
+
+        marker_e1dbba9b04740ae60b0b9ac7282429aa.bindPopup(popup_6c31beb853bc264cff99eb8485a806d4)
+        ;
+
+        
+    
+    
+                marker_e1dbba9b04740ae60b0b9ac7282429aa.setIcon(icon_e1c349aa3873740a11ef1b797be5554a);
+            
+    
+            var marker_9c75874ff4beae51b59debdd21c71ca0 = L.marker(
+                [21.2699102, -157.819505],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_f439ace5379d12af777c96b5c3fd76e0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_edc40af5a091bc0ed1083324c552c3cd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_41657aea2b9d31668364b03af8977dbe = $(`<div id="html_41657aea2b9d31668364b03af8977dbe" style="width: 100.0%; height: 100.0%;">         <b>Orangutan</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 19개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_edc40af5a091bc0ed1083324c552c3cd.setContent(html_41657aea2b9d31668364b03af8977dbe);
+            
+        
+
+        marker_9c75874ff4beae51b59debdd21c71ca0.bindPopup(popup_edc40af5a091bc0ed1083324c552c3cd)
+        ;
+
+        
+    
+    
+                marker_9c75874ff4beae51b59debdd21c71ca0.setIcon(icon_f439ace5379d12af777c96b5c3fd76e0);
+            
+    
+            var marker_31df61e06bf33bfb468c7b496fcea11c = L.marker(
+                [21.2711895, -157.8206554],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_ac0d1e5402ad23ce3861e35776fcd9ea = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d3063599e2e3f7b3a4e900ebe0156f80 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bd5b7e1b94a0f77d78fbe92f2c37d489 = $(`<div id="html_bd5b7e1b94a0f77d78fbe92f2c37d489" style="width: 100.0%; height: 100.0%;">         <b>Australian Birds</b><br>         유형: attraction<br>         접근성 점수: 18/20<br>         버스 정류장: 20개<br>         상업시설: 8개<br>         클러스터: 0         </div>`)[0];
+                popup_d3063599e2e3f7b3a4e900ebe0156f80.setContent(html_bd5b7e1b94a0f77d78fbe92f2c37d489);
+            
+        
+
+        marker_31df61e06bf33bfb468c7b496fcea11c.bindPopup(popup_d3063599e2e3f7b3a4e900ebe0156f80)
+        ;
+
+        
+    
+    
+                marker_31df61e06bf33bfb468c7b496fcea11c.setIcon(icon_ac0d1e5402ad23ce3861e35776fcd9ea);
+            
+    
+            var marker_ddc44bdd17b093678369d418bd7eb393 = L.marker(
+                [21.2702988, -157.8196647],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_e6f69297e29da7f01d45f196e69f6079 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_56d6aeaa327139b6b486cab4f57d0ebd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6b04b7aaa7db5979e510e3a0c14a50a3 = $(`<div id="html_6b04b7aaa7db5979e510e3a0c14a50a3" style="width: 100.0%; height: 100.0%;">         <b>Monkey</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 19개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_56d6aeaa327139b6b486cab4f57d0ebd.setContent(html_6b04b7aaa7db5979e510e3a0c14a50a3);
+            
+        
+
+        marker_ddc44bdd17b093678369d418bd7eb393.bindPopup(popup_56d6aeaa327139b6b486cab4f57d0ebd)
+        ;
+
+        
+    
+    
+                marker_ddc44bdd17b093678369d418bd7eb393.setIcon(icon_e6f69297e29da7f01d45f196e69f6079);
+            
+    
+            var marker_cdbe26b1916b633861067cf1d4820846 = L.marker(
+                [21.2699897, -157.8174647],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_c6646dc4773e5e0cdc3a349b47f0fd36 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_adc7aa428db8d30489adef3b855f3bf3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ed28a673f9d151ebe3fdeba52319a967 = $(`<div id="html_ed28a673f9d151ebe3fdeba52319a967" style="width: 100.0%; height: 100.0%;">         <b>Crocodile</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 17개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_adc7aa428db8d30489adef3b855f3bf3.setContent(html_ed28a673f9d151ebe3fdeba52319a967);
+            
+        
+
+        marker_cdbe26b1916b633861067cf1d4820846.bindPopup(popup_adc7aa428db8d30489adef3b855f3bf3)
+        ;
+
+        
+    
+    
+                marker_cdbe26b1916b633861067cf1d4820846.setIcon(icon_c6646dc4773e5e0cdc3a349b47f0fd36);
+            
+    
+            var marker_3d30aee7655ae82d189ea4211ec382a1 = L.marker(
+                [21.2705701, -157.8166182],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_0d56de9bcaf79ff4c0c34bc44b1043be = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4f62ab6461ea7954ec71407d0bb8b733 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6f567ff71dcf13c39f7a6a9ec8a19861 = $(`<div id="html_6f567ff71dcf13c39f7a6a9ec8a19861" style="width: 100.0%; height: 100.0%;">         <b>Rhino</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 17개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_4f62ab6461ea7954ec71407d0bb8b733.setContent(html_6f567ff71dcf13c39f7a6a9ec8a19861);
+            
+        
+
+        marker_3d30aee7655ae82d189ea4211ec382a1.bindPopup(popup_4f62ab6461ea7954ec71407d0bb8b733)
+        ;
+
+        
+    
+    
+                marker_3d30aee7655ae82d189ea4211ec382a1.setIcon(icon_0d56de9bcaf79ff4c0c34bc44b1043be);
+            
+    
+            var marker_791f61d97e7008f9d1417729805e9de8 = L.marker(
+                [21.2696297, -157.8175291],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_544b8c4208337ca5c30317bdacf6d7b0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_da04b707875b25ab4f9f379481e55916 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6f65ccef27620c2c48ed3cabe05fba54 = $(`<div id="html_6f65ccef27620c2c48ed3cabe05fba54" style="width: 100.0%; height: 100.0%;">         <b>Hippo</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 17개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_da04b707875b25ab4f9f379481e55916.setContent(html_6f65ccef27620c2c48ed3cabe05fba54);
+            
+        
+
+        marker_791f61d97e7008f9d1417729805e9de8.bindPopup(popup_da04b707875b25ab4f9f379481e55916)
+        ;
+
+        
+    
+    
+                marker_791f61d97e7008f9d1417729805e9de8.setIcon(icon_544b8c4208337ca5c30317bdacf6d7b0);
+            
+    
+            var marker_8074447ade5561f94ed953f67d02221d = L.marker(
+                [21.2711195, -157.8200096],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_9fb7312cf72ad11911826eeec8710944 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_365267eb39112bc5cf3b3ce35da502c8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_092215baa75acc56f88b1001a98c58b1 = $(`<div id="html_092215baa75acc56f88b1001a98c58b1" style="width: 100.0%; height: 100.0%;">         <b>Hawaiian Nene</b><br>         유형: attraction<br>         접근성 점수: 15/20<br>         버스 정류장: 19개<br>         상업시설: 5개<br>         클러스터: 0         </div>`)[0];
+                popup_365267eb39112bc5cf3b3ce35da502c8.setContent(html_092215baa75acc56f88b1001a98c58b1);
+            
+        
+
+        marker_8074447ade5561f94ed953f67d02221d.bindPopup(popup_365267eb39112bc5cf3b3ce35da502c8)
+        ;
+
+        
+    
+    
+                marker_8074447ade5561f94ed953f67d02221d.setIcon(icon_9fb7312cf72ad11911826eeec8710944);
+            
+    
+            var marker_bc409ac25a4f2ead42714170bcab8e06 = L.marker(
+                [21.2702271, -157.8193453],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_e96e3d2f4c319146b73128b5e86ea669 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_51ca340dded9e4afbbe928cb2391136a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_564101c2b37331551d7b5d1130ad4b0a = $(`<div id="html_564101c2b37331551d7b5d1130ad4b0a" style="width: 100.0%; height: 100.0%;">         <b>Aldabra Turtoise</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 19개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_51ca340dded9e4afbbe928cb2391136a.setContent(html_564101c2b37331551d7b5d1130ad4b0a);
+            
+        
+
+        marker_bc409ac25a4f2ead42714170bcab8e06.bindPopup(popup_51ca340dded9e4afbbe928cb2391136a)
+        ;
+
+        
+    
+    
+                marker_bc409ac25a4f2ead42714170bcab8e06.setIcon(icon_e96e3d2f4c319146b73128b5e86ea669);
+            
+    
+            var marker_7c0796361ef981cd027a2d2441b525a9 = L.marker(
+                [21.2702301, -157.8166182],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_e6d937908cd28ea6d4a68cb92f89c8a1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_71e65b5d6410f3a23d2c7806e3ce9e53 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_186aab0c28ff7c98687298e5aa1a4ca2 = $(`<div id="html_186aab0c28ff7c98687298e5aa1a4ca2" style="width: 100.0%; height: 100.0%;">         <b>Zebra</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 17개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_71e65b5d6410f3a23d2c7806e3ce9e53.setContent(html_186aab0c28ff7c98687298e5aa1a4ca2);
+            
+        
+
+        marker_7c0796361ef981cd027a2d2441b525a9.bindPopup(popup_71e65b5d6410f3a23d2c7806e3ce9e53)
+        ;
+
+        
+    
+    
+                marker_7c0796361ef981cd027a2d2441b525a9.setIcon(icon_e6d937908cd28ea6d4a68cb92f89c8a1);
+            
+    
+            var marker_c06405f654778c70614cd3ef9cf52fd1 = L.marker(
+                [21.2709195, -157.8166289],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_6e91d32db9bfcdde27b545512c879d14 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b4263725681ae6d741150a5b9315024c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0f88e285b0ed2556663fdc324cfaacc9 = $(`<div id="html_0f88e285b0ed2556663fdc324cfaacc9" style="width: 100.0%; height: 100.0%;">         <b>Giraffe</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 19개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_b4263725681ae6d741150a5b9315024c.setContent(html_0f88e285b0ed2556663fdc324cfaacc9);
+            
+        
+
+        marker_c06405f654778c70614cd3ef9cf52fd1.bindPopup(popup_b4263725681ae6d741150a5b9315024c)
+        ;
+
+        
+    
+    
+                marker_c06405f654778c70614cd3ef9cf52fd1.setIcon(icon_6e91d32db9bfcdde27b545512c879d14);
+            
+    
+            var marker_62f6a1ba913a94f1846a2d4fb1950dcd = L.marker(
+                [21.2704191, -157.8169819],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_58ea857472d81b54eaa84f32e11ad9d2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1f4dd05fd047f838fa2d7bf554b6f1ac = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_48bc9463753ae6b816eb76b79905bc6a = $(`<div id="html_48bc9463753ae6b816eb76b79905bc6a" style="width: 100.0%; height: 100.0%;">         <b>Kudu</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 17개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_1f4dd05fd047f838fa2d7bf554b6f1ac.setContent(html_48bc9463753ae6b816eb76b79905bc6a);
+            
+        
+
+        marker_62f6a1ba913a94f1846a2d4fb1950dcd.bindPopup(popup_1f4dd05fd047f838fa2d7bf554b6f1ac)
+        ;
+
+        
+    
+    
+                marker_62f6a1ba913a94f1846a2d4fb1950dcd.setIcon(icon_58ea857472d81b54eaa84f32e11ad9d2);
+            
+    
+            var marker_8ad253075f33112c90f7e8af47b7d322 = L.marker(
+                [21.27075, -157.8171761],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_aaa0a637960ca33fdf678a7e02edb3cf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ba3d97c1c62d3b9c8bde14a2ad3e44b9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aad1d55354177c521b6933e76e1156b9 = $(`<div id="html_aad1d55354177c521b6933e76e1156b9" style="width: 100.0%; height: 100.0%;">         <b>Cheetah</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 17개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_ba3d97c1c62d3b9c8bde14a2ad3e44b9.setContent(html_aad1d55354177c521b6933e76e1156b9);
+            
+        
+
+        marker_8ad253075f33112c90f7e8af47b7d322.bindPopup(popup_ba3d97c1c62d3b9c8bde14a2ad3e44b9)
+        ;
+
+        
+    
+    
+                marker_8ad253075f33112c90f7e8af47b7d322.setIcon(icon_aaa0a637960ca33fdf678a7e02edb3cf);
+            
+    
+            var marker_b89f2e3eccf1381b6ec82e8b8152db64 = L.marker(
+                [21.270201, -157.8182768],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_e8e9db1813213123f5dae4265e2f6b77 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f9d3d67b6b9eafc57fb243711794f6d9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1d0733b60a27b0d171367c420d1936b0 = $(`<div id="html_1d0733b60a27b0d171367c420d1936b0" style="width: 100.0%; height: 100.0%;">         <b>Elephant</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 22개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_f9d3d67b6b9eafc57fb243711794f6d9.setContent(html_1d0733b60a27b0d171367c420d1936b0);
+            
+        
+
+        marker_b89f2e3eccf1381b6ec82e8b8152db64.bindPopup(popup_f9d3d67b6b9eafc57fb243711794f6d9)
+        ;
+
+        
+    
+    
+                marker_b89f2e3eccf1381b6ec82e8b8152db64.setIcon(icon_e8e9db1813213123f5dae4265e2f6b77);
+            
+    
+            var marker_5bcac738f92456a47c19004235b4a574 = L.marker(
+                [21.27099, -157.821253],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_dd1ae750ec4aa8eb0121cea4708f0062 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1480b7aaaaf8678fcf4745dd268aeb54 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0a7309e7b152acebcc3c9e8c56510c54 = $(`<div id="html_0a7309e7b152acebcc3c9e8c56510c54" style="width: 100.0%; height: 100.0%;">         <b>Duck</b><br>         유형: attraction<br>         접근성 점수: 20/20<br>         버스 정류장: 18개<br>         상업시설: 13개<br>         클러스터: 0         </div>`)[0];
+                popup_1480b7aaaaf8678fcf4745dd268aeb54.setContent(html_0a7309e7b152acebcc3c9e8c56510c54);
+            
+        
+
+        marker_5bcac738f92456a47c19004235b4a574.bindPopup(popup_1480b7aaaaf8678fcf4745dd268aeb54)
+        ;
+
+        
+    
+    
+                marker_5bcac738f92456a47c19004235b4a574.setIcon(icon_dd1ae750ec4aa8eb0121cea4708f0062);
+            
+    
+            var marker_75182a379a3e63984da8b6bc70aa2bc1 = L.marker(
+                [21.2712694, -157.8169079],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_83b4d8ae39d89957d9feb92443a59e71 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4343f892ca570c69177a183cbd8860f3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9cf11aacae8613f020100f1288d22d00 = $(`<div id="html_9cf11aacae8613f020100f1288d22d00" style="width: 100.0%; height: 100.0%;">         <b>Rock Cove Reptile</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 17개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_4343f892ca570c69177a183cbd8860f3.setContent(html_9cf11aacae8613f020100f1288d22d00);
+            
+        
+
+        marker_75182a379a3e63984da8b6bc70aa2bc1.bindPopup(popup_4343f892ca570c69177a183cbd8860f3)
+        ;
+
+        
+    
+    
+                marker_75182a379a3e63984da8b6bc70aa2bc1.setIcon(icon_83b4d8ae39d89957d9feb92443a59e71);
+            
+    
+            var marker_e092de7ef606254bfc86116e87dc5e1e = L.marker(
+                [21.2710895, -157.8173907],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_053abac0a8744710718800f51bfe1c42 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a14de8cb8980599b899ee9436e98612f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fb15027a9f6a9af5e05833faef57ee68 = $(`<div id="html_fb15027a9f6a9af5e05833faef57ee68" style="width: 100.0%; height: 100.0%;">         <b>Lion</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 18개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_a14de8cb8980599b899ee9436e98612f.setContent(html_fb15027a9f6a9af5e05833faef57ee68);
+            
+        
+
+        marker_e092de7ef606254bfc86116e87dc5e1e.bindPopup(popup_a14de8cb8980599b899ee9436e98612f)
+        ;
+
+        
+    
+    
+                marker_e092de7ef606254bfc86116e87dc5e1e.setIcon(icon_053abac0a8744710718800f51bfe1c42);
+            
+    
+            var marker_c03499d3df17ffd46458d73f7c260b25 = L.marker(
+                [21.2715699, -157.8169186],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_775a24560c53e94c233cc01773dcb024 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2ba35dc12a7ee963a8a4a81b3d0c1319 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ca56bc4f0ca7fdad8422e4668078103f = $(`<div id="html_ca56bc4f0ca7fdad8422e4668078103f" style="width: 100.0%; height: 100.0%;">         <b>Hornbill</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 17개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_2ba35dc12a7ee963a8a4a81b3d0c1319.setContent(html_ca56bc4f0ca7fdad8422e4668078103f);
+            
+        
+
+        marker_c03499d3df17ffd46458d73f7c260b25.bindPopup(popup_2ba35dc12a7ee963a8a4a81b3d0c1319)
+        ;
+
+        
+    
+    
+                marker_c03499d3df17ffd46458d73f7c260b25.setIcon(icon_775a24560c53e94c233cc01773dcb024);
+            
+    
+            var marker_5d667bd94c9997c5277db191171be1cc = L.marker(
+                [21.2705596, -157.8187204],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_45446d1f0c989f9d4f03ca66687bba88 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e30ea760846c4861b5e9c9d91342f515 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c01bd16714e74502a92a20338534e9c8 = $(`<div id="html_c01bd16714e74502a92a20338534e9c8" style="width: 100.0%; height: 100.0%;">         <b>Gharial</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 21개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_e30ea760846c4861b5e9c9d91342f515.setContent(html_c01bd16714e74502a92a20338534e9c8);
+            
+        
+
+        marker_5d667bd94c9997c5277db191171be1cc.bindPopup(popup_e30ea760846c4861b5e9c9d91342f515)
+        ;
+
+        
+    
+    
+                marker_5d667bd94c9997c5277db191171be1cc.setIcon(icon_45446d1f0c989f9d4f03ca66687bba88);
+            
+    
+            var marker_4b189a9ab72981e84f5ae1dd031038b7 = L.marker(
+                [21.2720593, -157.8172726],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_26accb25669a44ee2b2520b0ad116ef3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_179329d349293b08ce1cf499f8c2a33b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_29a81d9732cf1a202e570d38418f67dd = $(`<div id="html_29a81d9732cf1a202e570d38418f67dd" style="width: 100.0%; height: 100.0%;">         <b>African Aviary</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 18개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_179329d349293b08ce1cf499f8c2a33b.setContent(html_29a81d9732cf1a202e570d38418f67dd);
+            
+        
+
+        marker_4b189a9ab72981e84f5ae1dd031038b7.bindPopup(popup_179329d349293b08ce1cf499f8c2a33b)
+        ;
+
+        
+    
+    
+                marker_4b189a9ab72981e84f5ae1dd031038b7.setIcon(icon_26accb25669a44ee2b2520b0ad116ef3);
+            
+    
+            var marker_451d5eca1514607c84eb469258289f36 = L.marker(
+                [21.2709395, -157.8190214],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_a65a10e66c49de914348d55e557b0b3c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_036ba28f5eeb9f54a5d687c09e6179cd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_448c07167120e9886680600e61d10cee = $(`<div id="html_448c07167120e9886680600e61d10cee" style="width: 100.0%; height: 100.0%;">         <b>Galapagos Tortoise</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 20개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_036ba28f5eeb9f54a5d687c09e6179cd.setContent(html_448c07167120e9886680600e61d10cee);
+            
+        
+
+        marker_451d5eca1514607c84eb469258289f36.bindPopup(popup_036ba28f5eeb9f54a5d687c09e6179cd)
+        ;
+
+        
+    
+    
+                marker_451d5eca1514607c84eb469258289f36.setIcon(icon_a65a10e66c49de914348d55e557b0b3c);
+            
+    
+            var marker_21f62bce579cfe153fb2d191ce1ab6ed = L.marker(
+                [21.2713794, -157.8175087],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_18cf65fb8ca61c25703068a1511c1501 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6bf20a0971e541a509c035a6cf6c5c16 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c9779e0192b0af4e4f413d50d4e796bf = $(`<div id="html_c9779e0192b0af4e4f413d50d4e796bf" style="width: 100.0%; height: 100.0%;">         <b>African Wild Dog</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 18개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_6bf20a0971e541a509c035a6cf6c5c16.setContent(html_c9779e0192b0af4e4f413d50d4e796bf);
+            
+        
+
+        marker_21f62bce579cfe153fb2d191ce1ab6ed.bindPopup(popup_6bf20a0971e541a509c035a6cf6c5c16)
+        ;
+
+        
+    
+    
+                marker_21f62bce579cfe153fb2d191ce1ab6ed.setIcon(icon_18cf65fb8ca61c25703068a1511c1501);
+            
+    
+            var marker_f7929080055ab7aa6527d77e427ecc29 = L.marker(
+                [21.2706696, -157.821296],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_fd4f54cc13412095eda97cb14c892998 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_341b7c24010d52c8e3ba0cd101928174 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_80c050cc555baaa66943704fe36a323f = $(`<div id="html_80c050cc555baaa66943704fe36a323f" style="width: 100.0%; height: 100.0%;">         <b>Flamingo</b><br>         유형: attraction<br>         접근성 점수: 20/20<br>         버스 정류장: 16개<br>         상업시설: 10개<br>         클러스터: 0         </div>`)[0];
+                popup_341b7c24010d52c8e3ba0cd101928174.setContent(html_80c050cc555baaa66943704fe36a323f);
+            
+        
+
+        marker_f7929080055ab7aa6527d77e427ecc29.bindPopup(popup_341b7c24010d52c8e3ba0cd101928174)
+        ;
+
+        
+    
+    
+                marker_f7929080055ab7aa6527d77e427ecc29.setIcon(icon_fd4f54cc13412095eda97cb14c892998);
+            
+    
+            var marker_e5b18d7fe4711a6c1e333239e11ba873 = L.marker(
+                [21.2719098, -157.8169186],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_10f0101c21c0c2df597bf3f6c08bbf37 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8822567de44c5c354a268825137dd762 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0e170870106171e87383aa3908298fc0 = $(`<div id="html_0e170870106171e87383aa3908298fc0" style="width: 100.0%; height: 100.0%;">         <b>Chimpanzee</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 18개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_8822567de44c5c354a268825137dd762.setContent(html_0e170870106171e87383aa3908298fc0);
+            
+        
+
+        marker_e5b18d7fe4711a6c1e333239e11ba873.bindPopup(popup_8822567de44c5c354a268825137dd762)
+        ;
+
+        
+    
+    
+                marker_e5b18d7fe4711a6c1e333239e11ba873.setIcon(icon_10f0101c21c0c2df597bf3f6c08bbf37);
+            
+    
+            var marker_4f8595304a45c367f05ff69b30aa71bb = L.marker(
+                [21.2716194, -157.8174443],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_e5cae4fa1b3520d95315a9706e04b77c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a36aa25c6d9e58ccc31e142d1b2745ce = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_748fc97c52f63a32562a319e74531305 = $(`<div id="html_748fc97c52f63a32562a319e74531305" style="width: 100.0%; height: 100.0%;">         <b>Black Rhino</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 18개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_a36aa25c6d9e58ccc31e142d1b2745ce.setContent(html_748fc97c52f63a32562a319e74531305);
+            
+        
+
+        marker_4f8595304a45c367f05ff69b30aa71bb.bindPopup(popup_a36aa25c6d9e58ccc31e142d1b2745ce)
+        ;
+
+        
+    
+    
+                marker_4f8595304a45c367f05ff69b30aa71bb.setIcon(icon_e5cae4fa1b3520d95315a9706e04b77c);
+            
+    
+            var marker_ac3f4d188c8eb7d806fc279e3bf684c0 = L.marker(
+                [21.2712299, -157.8172083],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_39774ff6dc5f64c099a88fdf125c242a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0522031a4b9c26e8cdf0786328182a30 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_655ff4b29fbe222e2c70e9d8ed02e6af = $(`<div id="html_655ff4b29fbe222e2c70e9d8ed02e6af" style="width: 100.0%; height: 100.0%;">         <b>Hyena</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 17개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_0522031a4b9c26e8cdf0786328182a30.setContent(html_655ff4b29fbe222e2c70e9d8ed02e6af);
+            
+        
+
+        marker_ac3f4d188c8eb7d806fc279e3bf684c0.bindPopup(popup_0522031a4b9c26e8cdf0786328182a30)
+        ;
+
+        
+    
+    
+                marker_ac3f4d188c8eb7d806fc279e3bf684c0.setIcon(icon_39774ff6dc5f64c099a88fdf125c242a);
+            
+    
+            var marker_8ae418c9426f7cd200822701904632b7 = L.marker(
+                [21.2707195, -157.8192038],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_9757f2d7d23c098ca3c096730e697d69 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d90af726eb30333e628595ec033121c7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_28b4554819dc80214213cc30c94975b4 = $(`<div id="html_28b4554819dc80214213cc30c94975b4" style="width: 100.0%; height: 100.0%;">         <b>Alligator</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 19개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_d90af726eb30333e628595ec033121c7.setContent(html_28b4554819dc80214213cc30c94975b4);
+            
+        
+
+        marker_8ae418c9426f7cd200822701904632b7.bindPopup(popup_d90af726eb30333e628595ec033121c7)
+        ;
+
+        
+    
+    
+                marker_8ae418c9426f7cd200822701904632b7.setIcon(icon_9757f2d7d23c098ca3c096730e697d69);
+            
+    
+            var marker_91b52d4d4b0f14f2b2f976c18fca4d84 = L.marker(
+                [21.2718698, -157.8186283],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_9dde74232f14c757af444830c0eb20ef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2999b81fc6fe91491d5b939470dca44b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5d9df7e2c076c198f61b8f893059935f = $(`<div id="html_5d9df7e2c076c198f61b8f893059935f" style="width: 100.0%; height: 100.0%;">         <b>Domestic Animals</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 20개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_2999b81fc6fe91491d5b939470dca44b.setContent(html_5d9df7e2c076c198f61b8f893059935f);
+            
+        
+
+        marker_91b52d4d4b0f14f2b2f976c18fca4d84.bindPopup(popup_2999b81fc6fe91491d5b939470dca44b)
+        ;
+
+        
+    
+    
+                marker_91b52d4d4b0f14f2b2f976c18fca4d84.setIcon(icon_9dde74232f14c757af444830c0eb20ef);
+            
+    
+            var marker_e4ee3084ea907ce70c4208ddbdacbf78 = L.marker(
+                [21.2709505, -157.820259],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_84e9e010bfc0838bffea40e61e00c0ab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ceeaa5deabcdfe8e9b544e38a7c7d85a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1a8fbd5301f4801dd5c665084a3b5aee = $(`<div id="html_1a8fbd5301f4801dd5c665084a3b5aee" style="width: 100.0%; height: 100.0%;">         <b>Australian Birds</b><br>         유형: attraction<br>         접근성 점수: 15/20<br>         버스 정류장: 18개<br>         상업시설: 5개<br>         클러스터: 0         </div>`)[0];
+                popup_ceeaa5deabcdfe8e9b544e38a7c7d85a.setContent(html_1a8fbd5301f4801dd5c665084a3b5aee);
+            
+        
+
+        marker_e4ee3084ea907ce70c4208ddbdacbf78.bindPopup(popup_ceeaa5deabcdfe8e9b544e38a7c7d85a)
+        ;
+
+        
+    
+    
+                marker_e4ee3084ea907ce70c4208ddbdacbf78.setIcon(icon_84e9e010bfc0838bffea40e61e00c0ab);
+            
+    
+            var marker_7dcca98ecceb1620a19ff66643b279bf = L.marker(
+                [21.3053403, -157.859911],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_0d1bd85a12aec9e3e8eac5cfa6ad350e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1f4f2280840d535707ab78bf047bbdc0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4f1f512999c87f7812c27fe793886bf6 = $(`<div id="html_4f1f512999c87f7812c27fe793886bf6" style="width: 100.0%; height: 100.0%;">         <b>King Kamehameha V Judiciary History Center</b><br>         유형: museum<br>         접근성 점수: 15/20<br>         버스 정류장: 43개<br>         상업시설: 5개<br>         클러스터: 0         </div>`)[0];
+                popup_1f4f2280840d535707ab78bf047bbdc0.setContent(html_4f1f512999c87f7812c27fe793886bf6);
+            
+        
+
+        marker_7dcca98ecceb1620a19ff66643b279bf.bindPopup(popup_1f4f2280840d535707ab78bf047bbdc0)
+        ;
+
+        
+    
+    
+                marker_7dcca98ecceb1620a19ff66643b279bf.setIcon(icon_0d1bd85a12aec9e3e8eac5cfa6ad350e);
+            
+    
+            var marker_2c791160d67594821cf93d35a370b975 = L.marker(
+                [21.6483039, -157.912792],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_cc8d4e9d20dba25ae803befbb3056ff7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3e03d8803296e6758ea14453eeb5ef01 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bb305a660bcede1785aed216ed60e887 = $(`<div id="html_bb305a660bcede1785aed216ed60e887" style="width: 100.0%; height: 100.0%;">         <b>Lāʻie Point</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 2         </div>`)[0];
+                popup_3e03d8803296e6758ea14453eeb5ef01.setContent(html_bb305a660bcede1785aed216ed60e887);
+            
+        
+
+        marker_2c791160d67594821cf93d35a370b975.bindPopup(popup_3e03d8803296e6758ea14453eeb5ef01)
+        ;
+
+        
+    
+    
+                marker_2c791160d67594821cf93d35a370b975.setIcon(icon_cc8d4e9d20dba25ae803befbb3056ff7);
+            
+    
+            var marker_9aabff77503b90bb778ddfac64228cfe = L.marker(
+                [21.2763701, -157.6855408],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_03eb9428410e81802621790115b91e13 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a341f901185591c7d021ec89cec5bad3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_461f0335464735e5d12b79458e747bfd = $(`<div id="html_461f0335464735e5d12b79458e747bfd" style="width: 100.0%; height: 100.0%;">         <b>Lanai Lookout</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_a341f901185591c7d021ec89cec5bad3.setContent(html_461f0335464735e5d12b79458e747bfd);
+            
+        
+
+        marker_9aabff77503b90bb778ddfac64228cfe.bindPopup(popup_a341f901185591c7d021ec89cec5bad3)
+        ;
+
+        
+    
+    
+                marker_9aabff77503b90bb778ddfac64228cfe.setIcon(icon_03eb9428410e81802621790115b91e13);
+            
+    
+            var marker_d05535bb5f7f5651325a9d483f8f758c = L.marker(
+                [21.293639, -157.861987],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_5ac26edfa5c1d2b65809da88803b6673 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7d9d8dc12e43a2c12a74c8b0e74fd03d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_58f0ff312cb0ceb2c7db12718980820f = $(`<div id="html_58f0ff312cb0ceb2c7db12718980820f" style="width: 100.0%; height: 100.0%;">         <b>Hawaii Children's Discovery Center</b><br>         유형: museum<br>         접근성 점수: 11/20<br>         버스 정류장: 6개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_7d9d8dc12e43a2c12a74c8b0e74fd03d.setContent(html_58f0ff312cb0ceb2c7db12718980820f);
+            
+        
+
+        marker_d05535bb5f7f5651325a9d483f8f758c.bindPopup(popup_7d9d8dc12e43a2c12a74c8b0e74fd03d)
+        ;
+
+        
+    
+    
+                marker_d05535bb5f7f5651325a9d483f8f758c.setIcon(icon_5ac26edfa5c1d2b65809da88803b6673);
+            
+    
+            var marker_52836ed18bed55990bca6ade68a94ff2 = L.marker(
+                [21.3866608, -157.7168545],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_954f616e7a81090d95624943855dddb2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cc3dd2f4d444dd7da2a8b3150bd36d2b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_87ea3e034aba65e1160e531c8178ba18 = $(`<div id="html_87ea3e034aba65e1160e531c8178ba18" style="width: 100.0%; height: 100.0%;">         <b>Pillbox #1</b><br>         유형: viewpoint<br>         접근성 점수: 10/20<br>         버스 정류장: 6개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_cc3dd2f4d444dd7da2a8b3150bd36d2b.setContent(html_87ea3e034aba65e1160e531c8178ba18);
+            
+        
+
+        marker_52836ed18bed55990bca6ade68a94ff2.bindPopup(popup_cc3dd2f4d444dd7da2a8b3150bd36d2b)
+        ;
+
+        
+    
+    
+                marker_52836ed18bed55990bca6ade68a94ff2.setIcon(icon_954f616e7a81090d95624943855dddb2);
+            
+    
+            var marker_fad9bd403925fd7e731beb7e776d6746 = L.marker(
+                [21.3420596, -157.7991809],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_4bf9b1c248797cf18d42f73b0e6c5749 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cca23b6cfe0943d229c7beb6dc7a8570 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_96f7fb3d50e87abb2689afc9bd8cec10 = $(`<div id="html_96f7fb3d50e87abb2689afc9bd8cec10" style="width: 100.0%; height: 100.0%;">         <b>Manoa Falls</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_cca23b6cfe0943d229c7beb6dc7a8570.setContent(html_96f7fb3d50e87abb2689afc9bd8cec10);
+            
+        
+
+        marker_fad9bd403925fd7e731beb7e776d6746.bindPopup(popup_cca23b6cfe0943d229c7beb6dc7a8570)
+        ;
+
+        
+    
+    
+                marker_fad9bd403925fd7e731beb7e776d6746.setIcon(icon_4bf9b1c248797cf18d42f73b0e6c5749);
+            
+    
+            var marker_7d4c729952725684f2fbabb69903a339 = L.marker(
+                [21.6809461, -158.0375903],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_7d6c9e2a4b306e8286c506d227e3a53d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_587dff956883fe617b49b065cc991ba6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_556a821561629dd4ff3b78b7d27acaac = $(`<div id="html_556a821561629dd4ff3b78b7d27acaac" style="width: 100.0%; height: 100.0%;">         <b>Backyards Beach</b><br>         유형: attraction<br>         접근성 점수: 10/20<br>         버스 정류장: 7개<br>         상업시설: 0개<br>         클러스터: 2         </div>`)[0];
+                popup_587dff956883fe617b49b065cc991ba6.setContent(html_556a821561629dd4ff3b78b7d27acaac);
+            
+        
+
+        marker_7d4c729952725684f2fbabb69903a339.bindPopup(popup_587dff956883fe617b49b065cc991ba6)
+        ;
+
+        
+    
+    
+                marker_7d4c729952725684f2fbabb69903a339.setIcon(icon_7d6c9e2a4b306e8286c506d227e3a53d);
+            
+    
+            var marker_22df44da58957ba625ae378d196a4931 = L.marker(
+                [21.5259081, -158.0378039],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_f72057b3157f476f961f49d45e47d316 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0072798fb4b168897a073429ae41b12d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7a1c5c029e89ee1611ee3708d9187c66 = $(`<div id="html_7a1c5c029e89ee1611ee3708d9187c66" style="width: 100.0%; height: 100.0%;">         <b>The Dole Plantation</b><br>         유형: attraction<br>         접근성 점수: 4/20<br>         버스 정류장: 2개<br>         상업시설: 0개<br>         클러스터: 2         </div>`)[0];
+                popup_0072798fb4b168897a073429ae41b12d.setContent(html_7a1c5c029e89ee1611ee3708d9187c66);
+            
+        
+
+        marker_22df44da58957ba625ae378d196a4931.bindPopup(popup_0072798fb4b168897a073429ae41b12d)
+        ;
+
+        
+    
+    
+                marker_22df44da58957ba625ae378d196a4931.setIcon(icon_f72057b3157f476f961f49d45e47d316);
+            
+    
+            var marker_2cd31b56664d53fd648fa2019ccbc37f = L.marker(
+                [21.6409788, -157.926107],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_5da6d952f0e785779746c8038dfc96aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9bc58817b64b702ea1cdbdfa903c004a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d73ce7b31b5da693ae906f09669f88e1 = $(`<div id="html_d73ce7b31b5da693ae906f09669f88e1" style="width: 100.0%; height: 100.0%;">         <b>Museum of Natural History at BYUH</b><br>         유형: museum<br>         접근성 점수: 1/20<br>         버스 정류장: 0개<br>         상업시설: 1개<br>         클러스터: 2         </div>`)[0];
+                popup_9bc58817b64b702ea1cdbdfa903c004a.setContent(html_d73ce7b31b5da693ae906f09669f88e1);
+            
+        
+
+        marker_2cd31b56664d53fd648fa2019ccbc37f.bindPopup(popup_9bc58817b64b702ea1cdbdfa903c004a)
+        ;
+
+        
+    
+    
+                marker_2cd31b56664d53fd648fa2019ccbc37f.setIcon(icon_5da6d952f0e785779746c8038dfc96aa);
+            
+    
+            var marker_7b10b70512b4174627937b86da389196 = L.marker(
+                [21.3139166, -157.8193852],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_f7813c600a3d29ddc4a75a13d8620c62 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a6066cbc27b80a3e36aa8755e75fab1d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a7b91b77bd9480f059ec15f3be2e079f = $(`<div id="html_a7b91b77bd9480f059ec15f3be2e079f" style="width: 100.0%; height: 100.0%;">         <b>Scenic Overlook</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_a6066cbc27b80a3e36aa8755e75fab1d.setContent(html_a7b91b77bd9480f059ec15f3be2e079f);
+            
+        
+
+        marker_7b10b70512b4174627937b86da389196.bindPopup(popup_a6066cbc27b80a3e36aa8755e75fab1d)
+        ;
+
+        
+    
+    
+                marker_7b10b70512b4174627937b86da389196.setIcon(icon_f7813c600a3d29ddc4a75a13d8620c62);
+            
+    
+            var marker_1f51d40f43c15d22ed9efdce6364de62 = L.marker(
+                [21.3147794, -157.8183618],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_f806bfb6f6e784285834b31e099d3b13 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_efe24cf6a7e0bf0505736026d5c9b313 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_61b6866e5c59afc3c5e7c7bb0ee005b8 = $(`<div id="html_61b6866e5c59afc3c5e7c7bb0ee005b8" style="width: 100.0%; height: 100.0%;">         <b>Scenic Overlook</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_efe24cf6a7e0bf0505736026d5c9b313.setContent(html_61b6866e5c59afc3c5e7c7bb0ee005b8);
+            
+        
+
+        marker_1f51d40f43c15d22ed9efdce6364de62.bindPopup(popup_efe24cf6a7e0bf0505736026d5c9b313)
+        ;
+
+        
+    
+    
+                marker_1f51d40f43c15d22ed9efdce6364de62.setIcon(icon_f806bfb6f6e784285834b31e099d3b13);
+            
+    
+            var marker_2fde9045b1062b11322309c1dce6c095 = L.marker(
+                [21.4187778, -157.762633],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_94b79ab018e709025a07368da5bf7475 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_acf6c3681072068fe6c0e10f29d07633 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_72cd1386cf1bdc91bef343384a3c10ad = $(`<div id="html_72cd1386cf1bdc91bef343384a3c10ad" style="width: 100.0%; height: 100.0%;">         <b>Scenic Lookout</b><br>         유형: viewpoint<br>         접근성 점수: 10/20<br>         버스 정류장: 9개<br>         상업시설: 0개<br>         클러스터: 1         </div>`)[0];
+                popup_acf6c3681072068fe6c0e10f29d07633.setContent(html_72cd1386cf1bdc91bef343384a3c10ad);
+            
+        
+
+        marker_2fde9045b1062b11322309c1dce6c095.bindPopup(popup_acf6c3681072068fe6c0e10f29d07633)
+        ;
+
+        
+    
+    
+                marker_2fde9045b1062b11322309c1dce6c095.setIcon(icon_94b79ab018e709025a07368da5bf7475);
+            
+    
+            var marker_2dfe26ac3d57f8d7c4ed3a972a2466dc = L.marker(
+                [21.4202407, -157.7616679],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_953d8ad1eeb457bd739b6f4f220ba5bd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b03badded4e07581965a718583205a05 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2cffbe8bae28e05588483fd09448be51 = $(`<div id="html_2cffbe8bae28e05588483fd09448be51" style="width: 100.0%; height: 100.0%;">         <b>Scenic Lookout</b><br>         유형: viewpoint<br>         접근성 점수: 10/20<br>         버스 정류장: 9개<br>         상업시설: 0개<br>         클러스터: 1         </div>`)[0];
+                popup_b03badded4e07581965a718583205a05.setContent(html_2cffbe8bae28e05588483fd09448be51);
+            
+        
+
+        marker_2dfe26ac3d57f8d7c4ed3a972a2466dc.bindPopup(popup_b03badded4e07581965a718583205a05)
+        ;
+
+        
+    
+    
+                marker_2dfe26ac3d57f8d7c4ed3a972a2466dc.setIcon(icon_953d8ad1eeb457bd739b6f4f220ba5bd);
+            
+    
+            var marker_1c8675b5fe0d1e2f9acead34c16685cf = L.marker(
+                [21.2560637, -157.8048118],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_e9af2aa54096de7e434aa3d96348a6e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_086cb6a2ffbbd136fe1ec34350a89ee4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f61e9408c698d7861bf26c260be2eafc = $(`<div id="html_f61e9408c698d7861bf26c260be2eafc" style="width: 100.0%; height: 100.0%;">         <b>Scenic View</b><br>         유형: viewpoint<br>         접근성 점수: 10/20<br>         버스 정류장: 5개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_086cb6a2ffbbd136fe1ec34350a89ee4.setContent(html_f61e9408c698d7861bf26c260be2eafc);
+            
+        
+
+        marker_1c8675b5fe0d1e2f9acead34c16685cf.bindPopup(popup_086cb6a2ffbbd136fe1ec34350a89ee4)
+        ;
+
+        
+    
+    
+                marker_1c8675b5fe0d1e2f9acead34c16685cf.setIcon(icon_e9af2aa54096de7e434aa3d96348a6e6);
+            
+    
+            var marker_fdaac4c60fb38c6b4e9ad5813b44d854 = L.marker(
+                [21.2565023, -157.8036994],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_cefb936470d66598b8c3c73e64301b9a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cae6f907cf454e666e8a6b97f8587382 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f0d633a704819af125d12187aebc3730 = $(`<div id="html_f0d633a704819af125d12187aebc3730" style="width: 100.0%; height: 100.0%;">         <b>Scenic View</b><br>         유형: viewpoint<br>         접근성 점수: 8/20<br>         버스 정류장: 4개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_cae6f907cf454e666e8a6b97f8587382.setContent(html_f0d633a704819af125d12187aebc3730);
+            
+        
+
+        marker_fdaac4c60fb38c6b4e9ad5813b44d854.bindPopup(popup_cae6f907cf454e666e8a6b97f8587382)
+        ;
+
+        
+    
+    
+                marker_fdaac4c60fb38c6b4e9ad5813b44d854.setIcon(icon_cefb936470d66598b8c3c73e64301b9a);
+            
+    
+            var marker_b9b4601b37342f0fccc1dd644c38f31e = L.marker(
+                [21.3857218, -157.7165099],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_28450cde161d244694dfb72a5a75eaa3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4508762953ecb6443881a13a972bf118 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f552053312b1a1823b1c72ec9c8b84b7 = $(`<div id="html_f552053312b1a1823b1c72ec9c8b84b7" style="width: 100.0%; height: 100.0%;">         <b>Pillbox #2</b><br>         유형: viewpoint<br>         접근성 점수: 10/20<br>         버스 정류장: 5개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_4508762953ecb6443881a13a972bf118.setContent(html_f552053312b1a1823b1c72ec9c8b84b7);
+            
+        
+
+        marker_b9b4601b37342f0fccc1dd644c38f31e.bindPopup(popup_4508762953ecb6443881a13a972bf118)
+        ;
+
+        
+    
+    
+                marker_b9b4601b37342f0fccc1dd644c38f31e.setIcon(icon_28450cde161d244694dfb72a5a75eaa3);
+            
+    
+            var marker_8038fc445be6aa02658bd125ceb7b9b0 = L.marker(
+                [21.3360744, -158.0864488],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_adb0a4d473ec794a7607d021328bfea5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a393bf62867a6171229d581f2e463993 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5c7e52d02e7473be148ac227f8c10261 = $(`<div id="html_5c7e52d02e7473be148ac227f8c10261" style="width: 100.0%; height: 100.0%;">         <b>Big Kahuna</b><br>         유형: attraction<br>         접근성 점수: 4/20<br>         버스 정류장: 2개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_a393bf62867a6171229d581f2e463993.setContent(html_5c7e52d02e7473be148ac227f8c10261);
+            
+        
+
+        marker_8038fc445be6aa02658bd125ceb7b9b0.bindPopup(popup_a393bf62867a6171229d581f2e463993)
+        ;
+
+        
+    
+    
+                marker_8038fc445be6aa02658bd125ceb7b9b0.setIcon(icon_adb0a4d473ec794a7607d021328bfea5);
+            
+    
+            var marker_dd2b5f3169c9909dc3a70c19c59a745e = L.marker(
+                [21.3349623, -158.0861519],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_334d9311dd2e4c5b4cbb363efc107a9c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f7620241b2bd0469fbf0bb0fb3fabf2c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f0e691f00709c7100bc4b9d38ca457a3 = $(`<div id="html_f0e691f00709c7100bc4b9d38ca457a3" style="width: 100.0%; height: 100.0%;">         <b>Shaka</b><br>         유형: attraction<br>         접근성 점수: 10/20<br>         버스 정류장: 6개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_f7620241b2bd0469fbf0bb0fb3fabf2c.setContent(html_f0e691f00709c7100bc4b9d38ca457a3);
+            
+        
+
+        marker_dd2b5f3169c9909dc3a70c19c59a745e.bindPopup(popup_f7620241b2bd0469fbf0bb0fb3fabf2c)
+        ;
+
+        
+    
+    
+                marker_dd2b5f3169c9909dc3a70c19c59a745e.setIcon(icon_334d9311dd2e4c5b4cbb363efc107a9c);
+            
+    
+            var marker_986cdfe24c7b3ddbec4ce876da0f99f8 = L.marker(
+                [21.3363374, -158.0875664],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_a6a734af674045026b9dd5e031009839 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3583c430441e57b91dc0dd57a86ad9b0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c64c38d67818fb8eac61d6a5a6ee6978 = $(`<div id="html_c64c38d67818fb8eac61d6a5a6ee6978" style="width: 100.0%; height: 100.0%;">         <b>Island Racer</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_3583c430441e57b91dc0dd57a86ad9b0.setContent(html_c64c38d67818fb8eac61d6a5a6ee6978);
+            
+        
+
+        marker_986cdfe24c7b3ddbec4ce876da0f99f8.bindPopup(popup_3583c430441e57b91dc0dd57a86ad9b0)
+        ;
+
+        
+    
+    
+                marker_986cdfe24c7b3ddbec4ce876da0f99f8.setIcon(icon_a6a734af674045026b9dd5e031009839);
+            
+    
+            var marker_9091a3bdeaf320426bcd686f977fb240 = L.marker(
+                [21.3347247, -158.0881252],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_652ea78c48deb440d8af2505dcd4f881 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_69ce4a30f6ea54e34990e3c5392b625e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_78a0515e5ac76bfa0cd0b6d0e05eac1c = $(`<div id="html_78a0515e5ac76bfa0cd0b6d0e05eac1c" style="width: 100.0%; height: 100.0%;">         <b>Island Adventure Golf</b><br>         유형: attraction<br>         접근성 점수: 2/20<br>         버스 정류장: 1개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_69ce4a30f6ea54e34990e3c5392b625e.setContent(html_78a0515e5ac76bfa0cd0b6d0e05eac1c);
+            
+        
+
+        marker_9091a3bdeaf320426bcd686f977fb240.bindPopup(popup_69ce4a30f6ea54e34990e3c5392b625e)
+        ;
+
+        
+    
+    
+                marker_9091a3bdeaf320426bcd686f977fb240.setIcon(icon_652ea78c48deb440d8af2505dcd4f881);
+            
+    
+            var marker_2a0c74439af3a7901c01318c98d12d6c = L.marker(
+                [21.444969, -157.8226585],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_a72e3b85ab1fed0b57843ca13fdc31fc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_70f6ece5d4add56e5314560c2a3b7941 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e43c80f4764cf92be645edcfc79cbef3 = $(`<div id="html_e43c80f4764cf92be645edcfc79cbef3" style="width: 100.0%; height: 100.0%;">         <b>Pu’u Ma’eli’eli WWII bunker</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 1         </div>`)[0];
+                popup_70f6ece5d4add56e5314560c2a3b7941.setContent(html_e43c80f4764cf92be645edcfc79cbef3);
+            
+        
+
+        marker_2a0c74439af3a7901c01318c98d12d6c.bindPopup(popup_70f6ece5d4add56e5314560c2a3b7941)
+        ;
+
+        
+    
+    
+                marker_2a0c74439af3a7901c01318c98d12d6c.setIcon(icon_a72e3b85ab1fed0b57843ca13fdc31fc);
+            
+    
+            var marker_3afdbb2a844ae56b223f39ebc342a348 = L.marker(
+                [21.2849258, -157.686401],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_77f8ac0b46d0f4e0e7aee39b5208b520 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_974e777eef18adc1ed59f35f3440b577 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_de2adb39352322471db9bea925e3272e = $(`<div id="html_de2adb39352322471db9bea925e3272e" style="width: 100.0%; height: 100.0%;">         <b>Koko Crater Lookout</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_974e777eef18adc1ed59f35f3440b577.setContent(html_de2adb39352322471db9bea925e3272e);
+            
+        
+
+        marker_3afdbb2a844ae56b223f39ebc342a348.bindPopup(popup_974e777eef18adc1ed59f35f3440b577)
+        ;
+
+        
+    
+    
+                marker_3afdbb2a844ae56b223f39ebc342a348.setIcon(icon_77f8ac0b46d0f4e0e7aee39b5208b520);
+            
+    
+            var marker_4cafc1d621ae6d9cd9cd9820310239b0 = L.marker(
+                [21.3094082, -157.6568693],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_a3e57565d6a920f5eeaebf847731683a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_01004ffc35a638d7bb6c6b8d2e44e2b6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_41348370773f4ac90f4c4df807c65c6f = $(`<div id="html_41348370773f4ac90f4c4df807c65c6f" style="width: 100.0%; height: 100.0%;">         <b>Makapu'u Lookout</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_01004ffc35a638d7bb6c6b8d2e44e2b6.setContent(html_41348370773f4ac90f4c4df807c65c6f);
+            
+        
+
+        marker_4cafc1d621ae6d9cd9cd9820310239b0.bindPopup(popup_01004ffc35a638d7bb6c6b8d2e44e2b6)
+        ;
+
+        
+    
+    
+                marker_4cafc1d621ae6d9cd9cd9820310239b0.setIcon(icon_a3e57565d6a920f5eeaebf847731683a);
+            
+    
+            var marker_a8bbafa7621d1b23593e931c38ae847d = L.marker(
+                [21.6415662, -157.9209711],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_0964bcac40f717e964f3e5aae646972d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8e0d5e53a82aafa7b7cfc787c6534794 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_01b5e382dad99687358407826bddc478 = $(`<div id="html_01b5e382dad99687358407826bddc478" style="width: 100.0%; height: 100.0%;">         <b>Aotearoa</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 6개<br>         상업시설: 1개<br>         클러스터: 2         </div>`)[0];
+                popup_8e0d5e53a82aafa7b7cfc787c6534794.setContent(html_01b5e382dad99687358407826bddc478);
+            
+        
+
+        marker_a8bbafa7621d1b23593e931c38ae847d.bindPopup(popup_8e0d5e53a82aafa7b7cfc787c6534794)
+        ;
+
+        
+    
+    
+                marker_a8bbafa7621d1b23593e931c38ae847d.setIcon(icon_0964bcac40f717e964f3e5aae646972d);
+            
+    
+            var marker_38d622c719d996bfa9df02e5f92e1c2e = L.marker(
+                [21.6423748, -157.9215564],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_281bd31b90e2e0bbc19a1ac84aa30605 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_33b076e6ffa8435db48bb0966f78cca0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0c2d20f1092251cf9ad2b8e196f234e8 = $(`<div id="html_0c2d20f1092251cf9ad2b8e196f234e8" style="width: 100.0%; height: 100.0%;">         <b>Fiji</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 8개<br>         상업시설: 2개<br>         클러스터: 2         </div>`)[0];
+                popup_33b076e6ffa8435db48bb0966f78cca0.setContent(html_0c2d20f1092251cf9ad2b8e196f234e8);
+            
+        
+
+        marker_38d622c719d996bfa9df02e5f92e1c2e.bindPopup(popup_33b076e6ffa8435db48bb0966f78cca0)
+        ;
+
+        
+    
+    
+                marker_38d622c719d996bfa9df02e5f92e1c2e.setIcon(icon_281bd31b90e2e0bbc19a1ac84aa30605);
+            
+    
+            var marker_7fbf3fb6a08a1be8751dcc776f01eff4 = L.marker(
+                [21.6430952, -157.9214338],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_b97a956f5e73f3ddf0f546174b9284c7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4e37192b367ff4864b684faf6893f548 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e6f9c7ae29df17dbbbc9433cbf14ac99 = $(`<div id="html_e6f9c7ae29df17dbbbc9433cbf14ac99" style="width: 100.0%; height: 100.0%;">         <b>Hawai'i</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 8개<br>         상업시설: 1개<br>         클러스터: 2         </div>`)[0];
+                popup_4e37192b367ff4864b684faf6893f548.setContent(html_e6f9c7ae29df17dbbbc9433cbf14ac99);
+            
+        
+
+        marker_7fbf3fb6a08a1be8751dcc776f01eff4.bindPopup(popup_4e37192b367ff4864b684faf6893f548)
+        ;
+
+        
+    
+    
+                marker_7fbf3fb6a08a1be8751dcc776f01eff4.setIcon(icon_b97a956f5e73f3ddf0f546174b9284c7);
+            
+    
+            var marker_b582c011a62467f15bd9bac94eef17a8 = L.marker(
+                [21.6436183, -157.9214941],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_c56f08659fe832d13baa6f475c33b781 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9d6c1184837cd18f76beed8d401fee10 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6f2f3b07bad441fed37bad6b26591d34 = $(`<div id="html_6f2f3b07bad441fed37bad6b26591d34" style="width: 100.0%; height: 100.0%;">         <b>Iosepa</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 7개<br>         상업시설: 1개<br>         클러스터: 2         </div>`)[0];
+                popup_9d6c1184837cd18f76beed8d401fee10.setContent(html_6f2f3b07bad441fed37bad6b26591d34);
+            
+        
+
+        marker_b582c011a62467f15bd9bac94eef17a8.bindPopup(popup_9d6c1184837cd18f76beed8d401fee10)
+        ;
+
+        
+    
+    
+                marker_b582c011a62467f15bd9bac94eef17a8.setIcon(icon_c56f08659fe832d13baa6f475c33b781);
+            
+    
+            var marker_ae5c63e2a22b2d8899c05ad0cc3dc0e8 = L.marker(
+                [21.6426953, -157.9221329],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_b026ca302d433b9ed447f0a65141cc30 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_058d89ccf9af69e4a32b6ac243e59b21 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f077208f73a1a169febfcf6f6b193570 = $(`<div id="html_f077208f73a1a169febfcf6f6b193570" style="width: 100.0%; height: 100.0%;">         <b>Tahiti</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 8개<br>         상업시설: 2개<br>         클러스터: 2         </div>`)[0];
+                popup_058d89ccf9af69e4a32b6ac243e59b21.setContent(html_f077208f73a1a169febfcf6f6b193570);
+            
+        
+
+        marker_ae5c63e2a22b2d8899c05ad0cc3dc0e8.bindPopup(popup_058d89ccf9af69e4a32b6ac243e59b21)
+        ;
+
+        
+    
+    
+                marker_ae5c63e2a22b2d8899c05ad0cc3dc0e8.setIcon(icon_b026ca302d433b9ed447f0a65141cc30);
+            
+    
+            var marker_a0fb3798fee62bb4f2998e57c1853619 = L.marker(
+                [21.6417594, -157.9220621],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_450fc22aa3794b7012f9bd78163dde0b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d3f2899e1ec7564011748545f22d1a1f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_be813d15cc4bc77b21e68208a262527b = $(`<div id="html_be813d15cc4bc77b21e68208a262527b" style="width: 100.0%; height: 100.0%;">         <b>Tonga</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 6개<br>         상업시설: 2개<br>         클러스터: 2         </div>`)[0];
+                popup_d3f2899e1ec7564011748545f22d1a1f.setContent(html_be813d15cc4bc77b21e68208a262527b);
+            
+        
+
+        marker_a0fb3798fee62bb4f2998e57c1853619.bindPopup(popup_d3f2899e1ec7564011748545f22d1a1f)
+        ;
+
+        
+    
+    
+                marker_a0fb3798fee62bb4f2998e57c1853619.setIcon(icon_450fc22aa3794b7012f9bd78163dde0b);
+            
+    
+            var marker_72d3174a90cb52fd664b1408a0ddf647 = L.marker(
+                [21.6411664, -157.9212167],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_663b4ea2cb5e994aba9d817b8cecba50 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0079da426e754782b74b9345483fbbc6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b56414d6d134a3fad119cb746d85b571 = $(`<div id="html_b56414d6d134a3fad119cb746d85b571" style="width: 100.0%; height: 100.0%;">         <b>Rapa Nui</b><br>         유형: attraction<br>         접근성 점수: 12/20<br>         버스 정류장: 6개<br>         상업시설: 2개<br>         클러스터: 2         </div>`)[0];
+                popup_0079da426e754782b74b9345483fbbc6.setContent(html_b56414d6d134a3fad119cb746d85b571);
+            
+        
+
+        marker_72d3174a90cb52fd664b1408a0ddf647.bindPopup(popup_0079da426e754782b74b9345483fbbc6)
+        ;
+
+        
+    
+    
+                marker_72d3174a90cb52fd664b1408a0ddf647.setIcon(icon_663b4ea2cb5e994aba9d817b8cecba50);
+            
+    
+            var marker_a407ffea05c044b398b1f8811d32aea4 = L.marker(
+                [21.5889088, -158.102785],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_617ffb3f52585b3abe806ab68da8c884 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f229a3c2e24e7855632e73084bfec0e9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_94bbf428232f4c7af2f347a119d1bcc4 = $(`<div id="html_94bbf428232f4c7af2f347a119d1bcc4" style="width: 100.0%; height: 100.0%;">         <b>Haleiwa哈雷伊瓦小鎮</b><br>         유형: attraction<br>         접근성 점수: 19/20<br>         버스 정류장: 11개<br>         상업시설: 9개<br>         클러스터: 2         </div>`)[0];
+                popup_f229a3c2e24e7855632e73084bfec0e9.setContent(html_94bbf428232f4c7af2f347a119d1bcc4);
+            
+        
+
+        marker_a407ffea05c044b398b1f8811d32aea4.bindPopup(popup_f229a3c2e24e7855632e73084bfec0e9)
+        ;
+
+        
+    
+    
+                marker_a407ffea05c044b398b1f8811d32aea4.setIcon(icon_617ffb3f52585b3abe806ab68da8c884);
+            
+    
+            var marker_a20342d6ba94c116ff7080b692d1bda3 = L.marker(
+                [21.498805, -158.027157],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_c6a8279825ba6a10a0652053ba8c18fc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2050a8c223c37d2afb8956de9c11f2c0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5e96d1aa63e8c7b862413cab205c3ec8 = $(`<div id="html_5e96d1aa63e8c7b862413cab205c3ec8" style="width: 100.0%; height: 100.0%;">         <b>Wahiwa General Hospital Thrift Shop</b><br>         유형: attraction<br>         접근성 점수: 10/20<br>         버스 정류장: 21개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_2050a8c223c37d2afb8956de9c11f2c0.setContent(html_5e96d1aa63e8c7b862413cab205c3ec8);
+            
+        
+
+        marker_a20342d6ba94c116ff7080b692d1bda3.bindPopup(popup_2050a8c223c37d2afb8956de9c11f2c0)
+        ;
+
+        
+    
+    
+                marker_a20342d6ba94c116ff7080b692d1bda3.setIcon(icon_c6a8279825ba6a10a0652053ba8c18fc);
+            
+    
+            var marker_2f192abc51a0a3a8815738124c0626e4 = L.marker(
+                [21.496541, -158.025177],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_376dde979975e11dab39058e75eb39b2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b5e5d981f02aa50f6efe6739b9a10d08 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1ff65c01c363d6dc0afe851fe01d0abe = $(`<div id="html_1ff65c01c363d6dc0afe851fe01d0abe" style="width: 100.0%; height: 100.0%;">         <b>Goodwill</b><br>         유형: attraction<br>         접근성 점수: 10/20<br>         버스 정류장: 21개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_b5e5d981f02aa50f6efe6739b9a10d08.setContent(html_1ff65c01c363d6dc0afe851fe01d0abe);
+            
+        
+
+        marker_2f192abc51a0a3a8815738124c0626e4.bindPopup(popup_b5e5d981f02aa50f6efe6739b9a10d08)
+        ;
+
+        
+    
+    
+                marker_2f192abc51a0a3a8815738124c0626e4.setIcon(icon_376dde979975e11dab39058e75eb39b2);
+            
+    
+            var marker_85ae17c55e29748f335435c210af2136 = L.marker(
+                [21.5783892, -158.183399],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_308e241bca3cb9d24ab316028e3f2904 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_21abc21b6517eb4d780e931275de0590 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0d8688e009d3024bf94d37b3d287dc00 = $(`<div id="html_0d8688e009d3024bf94d37b3d287dc00" style="width: 100.0%; height: 100.0%;">         <b>Pacific Skydiving Honolulu</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_21abc21b6517eb4d780e931275de0590.setContent(html_0d8688e009d3024bf94d37b3d287dc00);
+            
+        
+
+        marker_85ae17c55e29748f335435c210af2136.bindPopup(popup_21abc21b6517eb4d780e931275de0590)
+        ;
+
+        
+    
+    
+                marker_85ae17c55e29748f335435c210af2136.setIcon(icon_308e241bca3cb9d24ab316028e3f2904);
+            
+    
+            var marker_c4642d5560c0836403b17956e99a8ee6 = L.marker(
+                [21.2757845, -157.8255465],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_d680a0891d9ceab0d8de95c254100cf8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_23f8ca0ceff57d53de615d55ac7a406e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6fb83b1abb5b566e0b1578d7f3bfc6af = $(`<div id="html_6fb83b1abb5b566e0b1578d7f3bfc6af" style="width: 100.0%; height: 100.0%;">         <b>The Stones Of Life</b><br>         유형: attraction<br>         접근성 점수: 20/20<br>         버스 정류장: 13개<br>         상업시설: 37개<br>         클러스터: 0         </div>`)[0];
+                popup_23f8ca0ceff57d53de615d55ac7a406e.setContent(html_6fb83b1abb5b566e0b1578d7f3bfc6af);
+            
+        
+
+        marker_c4642d5560c0836403b17956e99a8ee6.bindPopup(popup_23f8ca0ceff57d53de615d55ac7a406e)
+        ;
+
+        
+    
+    
+                marker_c4642d5560c0836403b17956e99a8ee6.setIcon(icon_d680a0891d9ceab0d8de95c254100cf8);
+            
+    
+            var marker_1b7eb15d1f31dcf9adc9e4b74bc73c91 = L.marker(
+                [21.2694931, -157.8007315],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_f793b190ae38e7e24f56253d5066dd02 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_39f4473653ab3c3406ad3ad612d046a2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_78cdeec67acfc6bbd8534d6be3fecd0d = $(`<div id="html_78cdeec67acfc6bbd8534d6be3fecd0d" style="width: 100.0%; height: 100.0%;">         <b>KCC Saturday Farmers’ Market</b><br>         유형: attraction<br>         접근성 점수: 13/20<br>         버스 정류장: 20개<br>         상업시설: 3개<br>         클러스터: 0         </div>`)[0];
+                popup_39f4473653ab3c3406ad3ad612d046a2.setContent(html_78cdeec67acfc6bbd8534d6be3fecd0d);
+            
+        
+
+        marker_1b7eb15d1f31dcf9adc9e4b74bc73c91.bindPopup(popup_39f4473653ab3c3406ad3ad612d046a2)
+        ;
+
+        
+    
+    
+                marker_1b7eb15d1f31dcf9adc9e4b74bc73c91.setIcon(icon_f793b190ae38e7e24f56253d5066dd02);
+            
+    
+            var marker_964e608976614b081be7f156aad44b7d = L.marker(
+                [21.5942981, -158.1031487],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_807f8ec9fbfab988acfc95095dcfce48 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3476005d204ce48ea05b783513dc42fb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0cd2726f42279cd55679310fdeda8e05 = $(`<div id="html_0cd2726f42279cd55679310fdeda8e05" style="width: 100.0%; height: 100.0%;">         <b>Angel Wings</b><br>         유형: attraction<br>         접근성 점수: 13/20<br>         버스 정류장: 11개<br>         상업시설: 3개<br>         클러스터: 2         </div>`)[0];
+                popup_3476005d204ce48ea05b783513dc42fb.setContent(html_0cd2726f42279cd55679310fdeda8e05);
+            
+        
+
+        marker_964e608976614b081be7f156aad44b7d.bindPopup(popup_3476005d204ce48ea05b783513dc42fb)
+        ;
+
+        
+    
+    
+                marker_964e608976614b081be7f156aad44b7d.setIcon(icon_807f8ec9fbfab988acfc95095dcfce48);
+            
+    
+            var marker_2caa205af801087948a44dddfb56ced4 = L.marker(
+                [21.636374, -158.0548],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_0b712c1386be1af497e5cdf358576fdb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2e96e3a343d7f0950993c49c586dd977 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_798e4bdddc02d6ff7f5f132ce8336c41 = $(`<div id="html_798e4bdddc02d6ff7f5f132ce8336c41" style="width: 100.0%; height: 100.0%;">         <b>Waimea Valley</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 2         </div>`)[0];
+                popup_2e96e3a343d7f0950993c49c586dd977.setContent(html_798e4bdddc02d6ff7f5f132ce8336c41);
+            
+        
+
+        marker_2caa205af801087948a44dddfb56ced4.bindPopup(popup_2e96e3a343d7f0950993c49c586dd977)
+        ;
+
+        
+    
+    
+                marker_2caa205af801087948a44dddfb56ced4.setIcon(icon_0b712c1386be1af497e5cdf358576fdb);
+            
+    
+            var marker_a10e5c3860cd9040c8d590c0a09e7175 = L.marker(
+                [21.6390233, -157.920265],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_4a208b209e28cbf8e3801baacc1680d0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a581948ada3ded19fde1149518634841 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a119625e0b029f7a5799196286f90e47 = $(`<div id="html_a119625e0b029f7a5799196286f90e47" style="width: 100.0%; height: 100.0%;">         <b>Polynesian Cultural Center</b><br>         유형: attraction<br>         접근성 점수: 11/20<br>         버스 정류장: 6개<br>         상업시설: 1개<br>         클러스터: 2         </div>`)[0];
+                popup_a581948ada3ded19fde1149518634841.setContent(html_a119625e0b029f7a5799196286f90e47);
+            
+        
+
+        marker_a10e5c3860cd9040c8d590c0a09e7175.bindPopup(popup_a581948ada3ded19fde1149518634841)
+        ;
+
+        
+    
+    
+                marker_a10e5c3860cd9040c8d590c0a09e7175.setIcon(icon_4a208b209e28cbf8e3801baacc1680d0);
+            
+    
+            var marker_ba6cb5890cb935ca24347e757b140879 = L.marker(
+                [21.2653534, -157.7998651],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_4654fba3971e7e7e045991e35cc8010a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_756a3468fff6ebf3c2c3986269c58c9f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3d6af0d61bab0ecf649aaba91695703e = $(`<div id="html_3d6af0d61bab0ecf649aaba91695703e" style="width: 100.0%; height: 100.0%;">         <b>Kahala Lookout</b><br>         유형: viewpoint<br>         접근성 점수: 10/20<br>         버스 정류장: 7개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_756a3468fff6ebf3c2c3986269c58c9f.setContent(html_3d6af0d61bab0ecf649aaba91695703e);
+            
+        
+
+        marker_ba6cb5890cb935ca24347e757b140879.bindPopup(popup_756a3468fff6ebf3c2c3986269c58c9f)
+        ;
+
+        
+    
+    
+                marker_ba6cb5890cb935ca24347e757b140879.setIcon(icon_4654fba3971e7e7e045991e35cc8010a);
+            
+    
+            var marker_34966e48ac4c3aa773270d1bbae94e22 = L.marker(
+                [21.2978828, -157.6542429],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_28a22180d6552546154c0656274237c8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1edec90de299996fed6c36c72f284db1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7ea27844b003f0ecbc1cdfb0024cbf8e = $(`<div id="html_7ea27844b003f0ecbc1cdfb0024cbf8e" style="width: 100.0%; height: 100.0%;">         <b>Pele's Chair</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_1edec90de299996fed6c36c72f284db1.setContent(html_7ea27844b003f0ecbc1cdfb0024cbf8e);
+            
+        
+
+        marker_34966e48ac4c3aa773270d1bbae94e22.bindPopup(popup_1edec90de299996fed6c36c72f284db1)
+        ;
+
+        
+    
+    
+                marker_34966e48ac4c3aa773270d1bbae94e22.setIcon(icon_28a22180d6552546154c0656274237c8);
+            
+    
+            var marker_84592364e34e3047686d9b528abf6344 = L.marker(
+                [21.2638306, -157.7112336],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_acd785e34b156ae7107bd6ce703e0224 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c1b14524d08b4c2a5adfc091e34c6635 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b5fae32f3161c9c66156147ec450da78 = $(`<div id="html_b5fae32f3161c9c66156147ec450da78" style="width: 100.0%; height: 100.0%;">         <b>China Walls</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_c1b14524d08b4c2a5adfc091e34c6635.setContent(html_b5fae32f3161c9c66156147ec450da78);
+            
+        
+
+        marker_84592364e34e3047686d9b528abf6344.bindPopup(popup_c1b14524d08b4c2a5adfc091e34c6635)
+        ;
+
+        
+    
+    
+                marker_84592364e34e3047686d9b528abf6344.setIcon(icon_acd785e34b156ae7107bd6ce703e0224);
+            
+    
+            var marker_a1de5a411707605fea7425708bc9c95e = L.marker(
+                [21.3093267, -157.6506779],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_5347b1fb662eeccb721659e64a553434 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9866c9239c40dd04455197ab7aa0bd7b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_93a4a272784f7c2bc75b6483b85d0f9f = $(`<div id="html_93a4a272784f7c2bc75b6483b85d0f9f" style="width: 100.0%; height: 100.0%;">         <b>Makapu'u Lookout</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_9866c9239c40dd04455197ab7aa0bd7b.setContent(html_93a4a272784f7c2bc75b6483b85d0f9f);
+            
+        
+
+        marker_a1de5a411707605fea7425708bc9c95e.bindPopup(popup_9866c9239c40dd04455197ab7aa0bd7b)
+        ;
+
+        
+    
+    
+                marker_a1de5a411707605fea7425708bc9c95e.setIcon(icon_5347b1fb662eeccb721659e64a553434);
+            
+    
+            var marker_02bc0e20e50f8797508868833de850af = L.marker(
+                [21.3742043, -157.8801038],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_37d61f81663e313b20a6a1942f435f5b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_db42e8838272c3bb4a6b48ee0c1f35e6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a0cbb7f1199c6e7999922a607ce42cbf = $(`<div id="html_a0cbb7f1199c6e7999922a607ce42cbf" style="width: 100.0%; height: 100.0%;">         <b>Moanalua Valley Trail Start (Kulana'ahane)</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_db42e8838272c3bb4a6b48ee0c1f35e6.setContent(html_a0cbb7f1199c6e7999922a607ce42cbf);
+            
+        
+
+        marker_02bc0e20e50f8797508868833de850af.bindPopup(popup_db42e8838272c3bb4a6b48ee0c1f35e6)
+        ;
+
+        
+    
+    
+                marker_02bc0e20e50f8797508868833de850af.setIcon(icon_37d61f81663e313b20a6a1942f435f5b);
+            
+    
+            var marker_2240192318c881f7ff47ab405cb3e345 = L.marker(
+                [21.2977251, -157.8178404],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_857a7e00dc0b2e95bbbc1af6600ff3ea = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_29bf105c125f9e81c91a93f603856b3b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5e0a69d3052d599a724b6ecb1a24ee81 = $(`<div id="html_5e0a69d3052d599a724b6ecb1a24ee81" style="width: 100.0%; height: 100.0%;">         <b>John Young Museum of Art</b><br>         유형: museum<br>         접근성 점수: 11/20<br>         버스 정류장: 20개<br>         상업시설: 1개<br>         클러스터: 0         </div>`)[0];
+                popup_29bf105c125f9e81c91a93f603856b3b.setContent(html_5e0a69d3052d599a724b6ecb1a24ee81);
+            
+        
+
+        marker_2240192318c881f7ff47ab405cb3e345.bindPopup(popup_29bf105c125f9e81c91a93f603856b3b)
+        ;
+
+        
+    
+    
+                marker_2240192318c881f7ff47ab405cb3e345.setIcon(icon_857a7e00dc0b2e95bbbc1af6600ff3ea);
+            
+    
+            var marker_3cd3532311eb8b8cb18bdbf4c2605284 = L.marker(
+                [21.3470825, -157.8933217],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_e8083c0fd2cf6a924873f3aced9617d1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4c3b8d97cfc3353a068f7da4fafa0cc4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aeeb7fdd95541c9afd2c6d8df1adc32f = $(`<div id="html_aeeb7fdd95541c9afd2c6d8df1adc32f" style="width: 100.0%; height: 100.0%;">         <b>Hitachi Tree</b><br>         유형: attraction<br>         접근성 점수: 10/20<br>         버스 정류장: 9개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_4c3b8d97cfc3353a068f7da4fafa0cc4.setContent(html_aeeb7fdd95541c9afd2c6d8df1adc32f);
+            
+        
+
+        marker_3cd3532311eb8b8cb18bdbf4c2605284.bindPopup(popup_4c3b8d97cfc3353a068f7da4fafa0cc4)
+        ;
+
+        
+    
+    
+                marker_3cd3532311eb8b8cb18bdbf4c2605284.setIcon(icon_e8083c0fd2cf6a924873f3aced9617d1);
+            
+    
+            var marker_634f275e1f29ecdf6248f17309c27026 = L.marker(
+                [21.3853492, -158.0119099],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_c397bfce7bbb5752c4ff07c123695938 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e3b9dfe8a1a2ad3795835b5884630cc2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7f8e3db046df0a8069e9d4b999ab9084 = $(`<div id="html_7f8e3db046df0a8069e9d4b999ab9084" style="width: 100.0%; height: 100.0%;">         <b>Hawaii's Plantation Village</b><br>         유형: museum<br>         접근성 점수: 10/20<br>         버스 정류장: 13개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_e3b9dfe8a1a2ad3795835b5884630cc2.setContent(html_7f8e3db046df0a8069e9d4b999ab9084);
+            
+        
+
+        marker_634f275e1f29ecdf6248f17309c27026.bindPopup(popup_e3b9dfe8a1a2ad3795835b5884630cc2)
+        ;
+
+        
+    
+    
+                marker_634f275e1f29ecdf6248f17309c27026.setIcon(icon_c397bfce7bbb5752c4ff07c123695938);
+            
+    
+            var marker_9b948b9c4e9d90d23dc85ac64afb66cf = L.marker(
+                [21.5789497, -158.2373942],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_bc47414d9064b5d1ea89d7527492cee5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e0723ae00828731bb68e75cfd8a40bdd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7beb49e06ea44ab97a66cb64d1ca8b52 = $(`<div id="html_7beb49e06ea44ab97a66cb64d1ca8b52" style="width: 100.0%; height: 100.0%;">         <b>Kaena Point Trail</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_e0723ae00828731bb68e75cfd8a40bdd.setContent(html_7beb49e06ea44ab97a66cb64d1ca8b52);
+            
+        
+
+        marker_9b948b9c4e9d90d23dc85ac64afb66cf.bindPopup(popup_e0723ae00828731bb68e75cfd8a40bdd)
+        ;
+
+        
+    
+    
+                marker_9b948b9c4e9d90d23dc85ac64afb66cf.setIcon(icon_bc47414d9064b5d1ea89d7527492cee5);
+            
+    
+            var marker_890f01f4be941c600460cc181905c24a = L.marker(
+                [21.5477608, -158.2411571],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_70329b95fc0fb55bae76c2903291799e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9f2142ff0f6aa95a05b407953ffdc393 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9aaa641681f141e8427e48670b3f2739 = $(`<div id="html_9aaa641681f141e8427e48670b3f2739" style="width: 100.0%; height: 100.0%;">         <b>Yokohama Bay</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_9f2142ff0f6aa95a05b407953ffdc393.setContent(html_9aaa641681f141e8427e48670b3f2739);
+            
+        
+
+        marker_890f01f4be941c600460cc181905c24a.bindPopup(popup_9f2142ff0f6aa95a05b407953ffdc393)
+        ;
+
+        
+    
+    
+                marker_890f01f4be941c600460cc181905c24a.setIcon(icon_70329b95fc0fb55bae76c2903291799e);
+            
+    
+            var marker_11baea26f9836588eabbef6a5d1b2119 = L.marker(
+                [21.6091839, -158.0948452],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_60101b086b061121a6c52d36509a01bc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5a8555767bb65b8f3044b103b821efb8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6523070438afff85a74b553039ee0bf4 = $(`<div id="html_6523070438afff85a74b553039ee0bf4" style="width: 100.0%; height: 100.0%;">         <b>Laniakea Beach</b><br>         유형: attraction<br>         접근성 점수: 5/20<br>         버스 정류장: 2개<br>         상업시설: 1개<br>         클러스터: 2         </div>`)[0];
+                popup_5a8555767bb65b8f3044b103b821efb8.setContent(html_6523070438afff85a74b553039ee0bf4);
+            
+        
+
+        marker_11baea26f9836588eabbef6a5d1b2119.bindPopup(popup_5a8555767bb65b8f3044b103b821efb8)
+        ;
+
+        
+    
+    
+                marker_11baea26f9836588eabbef6a5d1b2119.setIcon(icon_60101b086b061121a6c52d36509a01bc);
+            
+    
+            var marker_0ea8c4def2189928952a9a635991a7f3 = L.marker(
+                [21.3955091, -157.8238294],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_3053b8055715691aa094c15b962b4f80 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_59db98a2cb19c67b4af442a7c89df153 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c8d0714dac2fda6e13cf0d5ae924fb49 = $(`<div id="html_c8d0714dac2fda6e13cf0d5ae924fb49" style="width: 100.0%; height: 100.0%;">         <b>Ha'iku Stairs (Stairway to Heaven)</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 1         </div>`)[0];
+                popup_59db98a2cb19c67b4af442a7c89df153.setContent(html_c8d0714dac2fda6e13cf0d5ae924fb49);
+            
+        
+
+        marker_0ea8c4def2189928952a9a635991a7f3.bindPopup(popup_59db98a2cb19c67b4af442a7c89df153)
+        ;
+
+        
+    
+    
+                marker_0ea8c4def2189928952a9a635991a7f3.setIcon(icon_3053b8055715691aa094c15b962b4f80);
+            
+    
+            var marker_167d6af7240059f9ce1f96c4f1b62cf9 = L.marker(
+                [21.3736959, -158.1413301],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_17300b806265aeb5f03f6e9172df8118 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_80df50ff98961d8c3f1000ce0e42bdcf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b759248b7ca75b3c4b66f52e91dd73e7 = $(`<div id="html_b759248b7ca75b3c4b66f52e91dd73e7" style="width: 100.0%; height: 100.0%;">         <b>Mermaid Cave / Tunnels</b><br>         유형: attraction<br>         접근성 점수: 4/20<br>         버스 정류장: 2개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_80df50ff98961d8c3f1000ce0e42bdcf.setContent(html_b759248b7ca75b3c4b66f52e91dd73e7);
+            
+        
+
+        marker_167d6af7240059f9ce1f96c4f1b62cf9.bindPopup(popup_80df50ff98961d8c3f1000ce0e42bdcf)
+        ;
+
+        
+    
+    
+                marker_167d6af7240059f9ce1f96c4f1b62cf9.setIcon(icon_17300b806265aeb5f03f6e9172df8118);
+            
+    
+            var marker_a1a0d2ea7ba83bcc8b0406fa21953705 = L.marker(
+                [21.376982, -158.1424483],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_85d8d36f4f47d524cf8c191e8f26b03c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_052eeb7924a78d83543fa6eed9f95636 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3a83289c820d60591a2d0335ede28c64 = $(`<div id="html_3a83289c820d60591a2d0335ede28c64" style="width: 100.0%; height: 100.0%;">         <b>Nanakuli Beach Park / Kalanianaole Beach Park</b><br>         유형: attraction<br>         접근성 점수: 10/20<br>         버스 정류장: 5개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_052eeb7924a78d83543fa6eed9f95636.setContent(html_3a83289c820d60591a2d0335ede28c64);
+            
+        
+
+        marker_a1a0d2ea7ba83bcc8b0406fa21953705.bindPopup(popup_052eeb7924a78d83543fa6eed9f95636)
+        ;
+
+        
+    
+    
+                marker_a1a0d2ea7ba83bcc8b0406fa21953705.setIcon(icon_85d8d36f4f47d524cf8c191e8f26b03c);
+            
+    
+            var marker_45f47d88c653c2250b119286b1f9e20d = L.marker(
+                [21.2938574, -157.858689],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_1a69531d75e9a0229f366f981f121363 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2941728aa9e84c0c479195abc80180ba = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8e680d54d91d4344cd0c7f3695757ff1 = $(`<div id="html_8e680d54d91d4344cd0c7f3695757ff1" style="width: 100.0%; height: 100.0%;">         <b>Paradise Pedals Hawaii</b><br>         유형: attraction<br>         접근성 점수: 10/20<br>         버스 정류장: 10개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_2941728aa9e84c0c479195abc80180ba.setContent(html_8e680d54d91d4344cd0c7f3695757ff1);
+            
+        
+
+        marker_45f47d88c653c2250b119286b1f9e20d.bindPopup(popup_2941728aa9e84c0c479195abc80180ba)
+        ;
+
+        
+    
+    
+                marker_45f47d88c653c2250b119286b1f9e20d.setIcon(icon_1a69531d75e9a0229f366f981f121363);
+            
+    
+            var marker_e638d92c7fb2ee07916ab981250e9f9c = L.marker(
+                [21.3134237, -157.8228652],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_8f280a765d0652d89a279bd63210a423 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_66be17124e4807c5f379eb29a03e3a2a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2ea69dfd434015d8410afeb8e880ed7a = $(`<div id="html_2ea69dfd434015d8410afeb8e880ed7a" style="width: 100.0%; height: 100.0%;">         <b>Tantalus Lookout</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_66be17124e4807c5f379eb29a03e3a2a.setContent(html_2ea69dfd434015d8410afeb8e880ed7a);
+            
+        
+
+        marker_e638d92c7fb2ee07916ab981250e9f9c.bindPopup(popup_66be17124e4807c5f379eb29a03e3a2a)
+        ;
+
+        
+    
+    
+                marker_e638d92c7fb2ee07916ab981250e9f9c.setIcon(icon_8f280a765d0652d89a279bd63210a423);
+            
+    
+            var marker_206a2196d80c05f971cdfd7ec65901fd = L.marker(
+                [21.3139429, -157.6633506],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_a04d69ddad18306c8bcdea09b6df89c3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dfff945440147df6acaac0d35686d86f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0fc3995f85d7afa6dd0322f2189455f2 = $(`<div id="html_0fc3995f85d7afa6dd0322f2189455f2" style="width: 100.0%; height: 100.0%;">         <b>Sea Lion Feeding Pool</b><br>         유형: attraction<br>         접근성 점수: 2/20<br>         버스 정류장: 1개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_dfff945440147df6acaac0d35686d86f.setContent(html_0fc3995f85d7afa6dd0322f2189455f2);
+            
+        
+
+        marker_206a2196d80c05f971cdfd7ec65901fd.bindPopup(popup_dfff945440147df6acaac0d35686d86f)
+        ;
+
+        
+    
+    
+                marker_206a2196d80c05f971cdfd7ec65901fd.setIcon(icon_a04d69ddad18306c8bcdea09b6df89c3);
+            
+    
+            var marker_0231017b964973cc6a05e69004f75b13 = L.marker(
+                [21.3143515, -157.6629066],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_728cd2f30a4e4cb34c4675f88f55cd72 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2d7c385ec83c478d500fa031168290d2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f13f44d6873575c04ec85cc6e1b3b794 = $(`<div id="html_f13f44d6873575c04ec85cc6e1b3b794" style="width: 100.0%; height: 100.0%;">         <b>Dolphin Lagoon</b><br>         유형: attraction<br>         접근성 점수: 2/20<br>         버스 정류장: 1개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_2d7c385ec83c478d500fa031168290d2.setContent(html_f13f44d6873575c04ec85cc6e1b3b794);
+            
+        
+
+        marker_0231017b964973cc6a05e69004f75b13.bindPopup(popup_2d7c385ec83c478d500fa031168290d2)
+        ;
+
+        
+    
+    
+                marker_0231017b964973cc6a05e69004f75b13.setIcon(icon_728cd2f30a4e4cb34c4675f88f55cd72);
+            
+    
+            var marker_b94e433ab50d2a5ab5e5e1ff89a1e303 = L.marker(
+                [21.3136393, -157.6628315],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_0f4cd43116ce0de314aa8b8fec085ff8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_52c4848c8d7cb6c13f7e383a5c97999b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4dc3e8d9f5d2d60a3591210a35abb194 = $(`<div id="html_4dc3e8d9f5d2d60a3591210a35abb194" style="width: 100.0%; height: 100.0%;">         <b>Hawaiian Reef</b><br>         유형: attraction<br>         접근성 점수: 2/20<br>         버스 정류장: 1개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_52c4848c8d7cb6c13f7e383a5c97999b.setContent(html_4dc3e8d9f5d2d60a3591210a35abb194);
+            
+        
+
+        marker_b94e433ab50d2a5ab5e5e1ff89a1e303.bindPopup(popup_52c4848c8d7cb6c13f7e383a5c97999b)
+        ;
+
+        
+    
+    
+                marker_b94e433ab50d2a5ab5e5e1ff89a1e303.setIcon(icon_0f4cd43116ce0de314aa8b8fec085ff8);
+            
+    
+            var marker_08cfa2a54b92fa70bd78530fa1f9294c = L.marker(
+                [21.3134831, -157.6627846],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_1aeff6d45eda0b2abf6a415e60153c89 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2cf04cdf18a371d5e5d5b973e819415a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_50e246a97d216a71a472ed8704101dc0 = $(`<div id="html_50e246a97d216a71a472ed8704101dc0" style="width: 100.0%; height: 100.0%;">         <b>Honu Green Sea Turtle</b><br>         유형: attraction<br>         접근성 점수: 2/20<br>         버스 정류장: 1개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_2cf04cdf18a371d5e5d5b973e819415a.setContent(html_50e246a97d216a71a472ed8704101dc0);
+            
+        
+
+        marker_08cfa2a54b92fa70bd78530fa1f9294c.bindPopup(popup_2cf04cdf18a371d5e5d5b973e819415a)
+        ;
+
+        
+    
+    
+                marker_08cfa2a54b92fa70bd78530fa1f9294c.setIcon(icon_1aeff6d45eda0b2abf6a415e60153c89);
+            
+    
+            var marker_5c748e2776a06068811e58c3b884991c = L.marker(
+                [21.3140541, -157.6623635],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_5262ba9ee356575e3cdc2e89e254ceb1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7cd357c1af1a00ec2b00286918bb76bc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_676d409982d6bbe953c45fe7083ac67f = $(`<div id="html_676d409982d6bbe953c45fe7083ac67f" style="width: 100.0%; height: 100.0%;">         <b>Hawaiian Monk Seal Habitat</b><br>         유형: attraction<br>         접근성 점수: 2/20<br>         버스 정류장: 1개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_7cd357c1af1a00ec2b00286918bb76bc.setContent(html_676d409982d6bbe953c45fe7083ac67f);
+            
+        
+
+        marker_5c748e2776a06068811e58c3b884991c.bindPopup(popup_7cd357c1af1a00ec2b00286918bb76bc)
+        ;
+
+        
+    
+    
+                marker_5c748e2776a06068811e58c3b884991c.setIcon(icon_5262ba9ee356575e3cdc2e89e254ceb1);
+            
+    
+            var marker_64345effe32c39d4d93a9f25e2d0010e = L.marker(
+                [21.3138679, -157.6628557],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_4dfc3c0bad164c8cf50c475a8f217dd2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a27c8ac5e4e6f832c4daf80370fa3d64 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d73d8e9d9dadcdc95f659d715a349565 = $(`<div id="html_d73d8e9d9dadcdc95f659d715a349565" style="width: 100.0%; height: 100.0%;">         <b>Penguin Habitat</b><br>         유형: attraction<br>         접근성 점수: 2/20<br>         버스 정류장: 1개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_a27c8ac5e4e6f832c4daf80370fa3d64.setContent(html_d73d8e9d9dadcdc95f659d715a349565);
+            
+        
+
+        marker_64345effe32c39d4d93a9f25e2d0010e.bindPopup(popup_a27c8ac5e4e6f832c4daf80370fa3d64)
+        ;
+
+        
+    
+    
+                marker_64345effe32c39d4d93a9f25e2d0010e.setIcon(icon_4dfc3c0bad164c8cf50c475a8f217dd2);
+            
+    
+            var marker_2556f57a02a498ef158609a2fb9f1b6e = L.marker(
+                [21.3139554, -157.6630166],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_4a4824f4ca94fc18f3d81136a60beb43 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_49c752e19ac8017a4b2fdea2501c890a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a164225e132e289484a05ee237fa5544 = $(`<div id="html_a164225e132e289484a05ee237fa5544" style="width: 100.0%; height: 100.0%;">         <b>Aviary</b><br>         유형: attraction<br>         접근성 점수: 2/20<br>         버스 정류장: 1개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_49c752e19ac8017a4b2fdea2501c890a.setContent(html_a164225e132e289484a05ee237fa5544);
+            
+        
+
+        marker_2556f57a02a498ef158609a2fb9f1b6e.bindPopup(popup_49c752e19ac8017a4b2fdea2501c890a)
+        ;
+
+        
+    
+    
+                marker_2556f57a02a498ef158609a2fb9f1b6e.setIcon(icon_4a4824f4ca94fc18f3d81136a60beb43);
+            
+    
+            var marker_5e8e19dd6b9c5f1fcf1dafbf77e817f1 = L.marker(
+                [21.2821201, -157.6789792],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_ca976764acb7df8d340f6fe87abdbffa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f7bf5d9d2b33d5669887d5b78ff6aa19 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fe4119412ab8f653e04b6b3761c353e0 = $(`<div id="html_fe4119412ab8f653e04b6b3761c353e0" style="width: 100.0%; height: 100.0%;">         <b>Koko Crater Arch</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_f7bf5d9d2b33d5669887d5b78ff6aa19.setContent(html_fe4119412ab8f653e04b6b3761c353e0);
+            
+        
+
+        marker_5e8e19dd6b9c5f1fcf1dafbf77e817f1.bindPopup(popup_f7bf5d9d2b33d5669887d5b78ff6aa19)
+        ;
+
+        
+    
+    
+                marker_5e8e19dd6b9c5f1fcf1dafbf77e817f1.setIcon(icon_ca976764acb7df8d340f6fe87abdbffa);
+            
+    
+            var marker_e3585e4b47972bb27091dfd6646d2b85 = L.marker(
+                [21.3451984, -157.8239976],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_abf29b6c8c22fb0116b91b24a236896a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4a54f509a082cf5137d03c3cda7f48e4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4df45bd9d68983cba50ab564b4815cf4 = $(`<div id="html_4df45bd9d68983cba50ab564b4815cf4" style="width: 100.0%; height: 100.0%;">         <b>Judd trail</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_4a54f509a082cf5137d03c3cda7f48e4.setContent(html_4df45bd9d68983cba50ab564b4815cf4);
+            
+        
+
+        marker_e3585e4b47972bb27091dfd6646d2b85.bindPopup(popup_4a54f509a082cf5137d03c3cda7f48e4)
+        ;
+
+        
+    
+    
+                marker_e3585e4b47972bb27091dfd6646d2b85.setIcon(icon_abf29b6c8c22fb0116b91b24a236896a);
+            
+    
+            var marker_1ca7bd86ad96e1c25d3fdf6265e3eb84 = L.marker(
+                [21.3245691, -157.6784368],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_495b70446df29261489c730fa9914825 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_219eeb194e775668fa63d16de1a7d839 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7f1bb65c3b7b225fb61019b4848bf7b2 = $(`<div id="html_7f1bb65c3b7b225fb61019b4848bf7b2" style="width: 100.0%; height: 100.0%;">         <b>Kaioa Beach Park</b><br>         유형: attraction<br>         접근성 점수: 10/20<br>         버스 정류장: 6개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_219eeb194e775668fa63d16de1a7d839.setContent(html_7f1bb65c3b7b225fb61019b4848bf7b2);
+            
+        
+
+        marker_1ca7bd86ad96e1c25d3fdf6265e3eb84.bindPopup(popup_219eeb194e775668fa63d16de1a7d839)
+        ;
+
+        
+    
+    
+                marker_1ca7bd86ad96e1c25d3fdf6265e3eb84.setIcon(icon_495b70446df29261489c730fa9914825);
+            
+    
+            var marker_32fb388442f413f5c601dfbda81315d3 = L.marker(
+                [21.3040638, -157.851284],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_99a445b96848d3563a9b020f1bd017f2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5bfbf5a11714fd1b3e5cfc6a60c34da1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ec05d2c69c8dffbe6e80cf6ab542f9ce = $(`<div id="html_ec05d2c69c8dffbe6e80cf6ab542f9ce" style="width: 100.0%; height: 100.0%;">         <b>Honolulu Police Department Museum</b><br>         유형: museum<br>         접근성 점수: 12/20<br>         버스 정류장: 31개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_5bfbf5a11714fd1b3e5cfc6a60c34da1.setContent(html_ec05d2c69c8dffbe6e80cf6ab542f9ce);
+            
+        
+
+        marker_32fb388442f413f5c601dfbda81315d3.bindPopup(popup_5bfbf5a11714fd1b3e5cfc6a60c34da1)
+        ;
+
+        
+    
+    
+                marker_32fb388442f413f5c601dfbda81315d3.setIcon(icon_99a445b96848d3563a9b020f1bd017f2);
+            
+    
+            var marker_5a17280b3dc15b99b9c6d3b88fc0971c = L.marker(
+                [21.3205785, -157.6821552],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_869cd5698b5484b54d66236d7fdd370c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_334c94277b53a0b4a040e3ad1d886414 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4327ace2ef0fcd1bf949465ff185ffb8 = $(`<div id="html_4327ace2ef0fcd1bf949465ff185ffb8" style="width: 100.0%; height: 100.0%;">         <b>The Dead Man's Catwalk</b><br>         유형: attraction<br>         접근성 점수: 8/20<br>         버스 정류장: 4개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_334c94277b53a0b4a040e3ad1d886414.setContent(html_4327ace2ef0fcd1bf949465ff185ffb8);
+            
+        
+
+        marker_5a17280b3dc15b99b9c6d3b88fc0971c.bindPopup(popup_334c94277b53a0b4a040e3ad1d886414)
+        ;
+
+        
+    
+    
+                marker_5a17280b3dc15b99b9c6d3b88fc0971c.setIcon(icon_869cd5698b5484b54d66236d7fdd370c);
+            
+    
+            var marker_b5f37f9b5c778ab5426d5552aebf1b77 = L.marker(
+                [21.6131439, -157.915657],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_678ad929250bbf7f611458306617fed8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c2df0d0807877ad03eb8683702a8d52f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a63344890c3ad774a036d5040138a7ef = $(`<div id="html_a63344890c3ad774a036d5040138a7ef" style="width: 100.0%; height: 100.0%;">         <b>Banzai Divers Hawaii</b><br>         유형: attraction<br>         접근성 점수: 10/20<br>         버스 정류장: 6개<br>         상업시설: 0개<br>         클러스터: 2         </div>`)[0];
+                popup_c2df0d0807877ad03eb8683702a8d52f.setContent(html_a63344890c3ad774a036d5040138a7ef);
+            
+        
+
+        marker_b5f37f9b5c778ab5426d5552aebf1b77.bindPopup(popup_c2df0d0807877ad03eb8683702a8d52f)
+        ;
+
+        
+    
+    
+                marker_b5f37f9b5c778ab5426d5552aebf1b77.setIcon(icon_678ad929250bbf7f611458306617fed8);
+            
+    
+            var marker_2d7447dc4f141a5876202ef32f7ce1c9 = L.marker(
+                [21.5104533, -157.8514135],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_0304338d52c962b37e28818892c23a9b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6452a2992c5998b458d60193086c7e88 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ee68dd94c248e5de2aa0564cc20f814c = $(`<div id="html_ee68dd94c248e5de2aa0564cc20f814c" style="width: 100.0%; height: 100.0%;">         <b>Tropical Macadamia Farm</b><br>         유형: attraction<br>         접근성 점수: 8/20<br>         버스 정류장: 4개<br>         상업시설: 0개<br>         클러스터: 1         </div>`)[0];
+                popup_6452a2992c5998b458d60193086c7e88.setContent(html_ee68dd94c248e5de2aa0564cc20f814c);
+            
+        
+
+        marker_2d7447dc4f141a5876202ef32f7ce1c9.bindPopup(popup_6452a2992c5998b458d60193086c7e88)
+        ;
+
+        
+    
+    
+                marker_2d7447dc4f141a5876202ef32f7ce1c9.setIcon(icon_0304338d52c962b37e28818892c23a9b);
+            
+    
+            var marker_fe4ea86250282e165a0fe30d86366ef6 = L.marker(
+                [21.600069, -158.1014108],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_345e30205f3cde60a1d589a666ccd090 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9606c029ba46d12ece3ab0b46bdaa3da = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_470cee783da439d7412565fdc659af8a = $(`<div id="html_470cee783da439d7412565fdc659af8a" style="width: 100.0%; height: 100.0%;">         <b>North Shore Macadamia Nut Company</b><br>         유형: attraction<br>         접근성 점수: 6/20<br>         버스 정류장: 3개<br>         상업시설: 0개<br>         클러스터: 2         </div>`)[0];
+                popup_9606c029ba46d12ece3ab0b46bdaa3da.setContent(html_470cee783da439d7412565fdc659af8a);
+            
+        
+
+        marker_fe4ea86250282e165a0fe30d86366ef6.bindPopup(popup_9606c029ba46d12ece3ab0b46bdaa3da)
+        ;
+
+        
+    
+    
+                marker_fe4ea86250282e165a0fe30d86366ef6.setIcon(icon_345e30205f3cde60a1d589a666ccd090);
+            
+    
+            var marker_913473dbe9787389fe7efbe90b7793f2 = L.marker(
+                [21.6667498, -158.0432271],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_782449781bc8184f9f749586f175f91a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b0f869741a8e6b29ffef7c2b29ada007 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5947e3e9e91a22c4873d0a38bb0e926b = $(`<div id="html_5947e3e9e91a22c4873d0a38bb0e926b" style="width: 100.0%; height: 100.0%;">         <b>Pillbox no.1</b><br>         유형: attraction<br>         접근성 점수: 8/20<br>         버스 정류장: 4개<br>         상업시설: 0개<br>         클러스터: 2         </div>`)[0];
+                popup_b0f869741a8e6b29ffef7c2b29ada007.setContent(html_5947e3e9e91a22c4873d0a38bb0e926b);
+            
+        
+
+        marker_913473dbe9787389fe7efbe90b7793f2.bindPopup(popup_b0f869741a8e6b29ffef7c2b29ada007)
+        ;
+
+        
+    
+    
+                marker_913473dbe9787389fe7efbe90b7793f2.setIcon(icon_782449781bc8184f9f749586f175f91a);
+            
+    
+            var marker_45d7cdb0eadd7e94efc9b1a54ac99b61 = L.marker(
+                [21.3108084, -157.8478751],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_21dcfcc4c80b454c52bfd9f8b3b3f97e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0293e3c12fe2da39d3ab6453a0928ee0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_765e289a72ee86da44d75718127b1094 = $(`<div id="html_765e289a72ee86da44d75718127b1094" style="width: 100.0%; height: 100.0%;">         <b>Punch Bowl</b><br>         유형: viewpoint<br>         접근성 점수: 10/20<br>         버스 정류장: 18개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_0293e3c12fe2da39d3ab6453a0928ee0.setContent(html_765e289a72ee86da44d75718127b1094);
+            
+        
+
+        marker_45d7cdb0eadd7e94efc9b1a54ac99b61.bindPopup(popup_0293e3c12fe2da39d3ab6453a0928ee0)
+        ;
+
+        
+    
+    
+                marker_45d7cdb0eadd7e94efc9b1a54ac99b61.setIcon(icon_21dcfcc4c80b454c52bfd9f8b3b3f97e);
+            
+    
+            var marker_c9115bd29fe64266290169641881318a = L.marker(
+                [21.4506295, -158.1961687],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_23481f2ad9baf06a8e92058a5fb9683c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3bda7f4f5b285c5cdc0dc861e29210b0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5af9db2e7304da4f92602a0e2fdd39b6 = $(`<div id="html_5af9db2e7304da4f92602a0e2fdd39b6" style="width: 100.0%; height: 100.0%;">         <b>Waianae Harbor</b><br>         유형: viewpoint<br>         접근성 점수: 11/20<br>         버스 정류장: 5개<br>         상업시설: 1개<br>         클러스터: 3         </div>`)[0];
+                popup_3bda7f4f5b285c5cdc0dc861e29210b0.setContent(html_5af9db2e7304da4f92602a0e2fdd39b6);
+            
+        
+
+        marker_c9115bd29fe64266290169641881318a.bindPopup(popup_3bda7f4f5b285c5cdc0dc861e29210b0)
+        ;
+
+        
+    
+    
+                marker_c9115bd29fe64266290169641881318a.setIcon(icon_23481f2ad9baf06a8e92058a5fb9683c);
+            
+    
+            var marker_6372ac2b6e91628fe9bc118cd9508e1c = L.marker(
+                [21.6690303, -158.0471483],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_5d0c7aabf952eddef58bbba64447ff45 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1b970af4c0c6e2611084195257f1dff6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_effc2741578be2592333b5716ef199e5 = $(`<div id="html_effc2741578be2592333b5716ef199e5" style="width: 100.0%; height: 100.0%;">         <b>Rocky rights surf</b><br>         유형: viewpoint<br>         접근성 점수: 8/20<br>         버스 정류장: 4개<br>         상업시설: 0개<br>         클러스터: 2         </div>`)[0];
+                popup_1b970af4c0c6e2611084195257f1dff6.setContent(html_effc2741578be2592333b5716ef199e5);
+            
+        
+
+        marker_6372ac2b6e91628fe9bc118cd9508e1c.bindPopup(popup_1b970af4c0c6e2611084195257f1dff6)
+        ;
+
+        
+    
+    
+                marker_6372ac2b6e91628fe9bc118cd9508e1c.setIcon(icon_5d0c7aabf952eddef58bbba64447ff45);
+            
+    
+            var marker_e30e6e92031703bd95b546ae8e68226a = L.marker(
+                [21.4779846, -158.2217249],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_fbba12f1942309cb70755b9f1b1397a8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4949587d7d295b2fbd72531d5f1a3ff4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_89d2c3c8b0aea03c834a2c03487626db = $(`<div id="html_89d2c3c8b0aea03c834a2c03487626db" style="width: 100.0%; height: 100.0%;">         <b>Mākaha beach</b><br>         유형: attraction<br>         접근성 점수: 10/20<br>         버스 정류장: 5개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_4949587d7d295b2fbd72531d5f1a3ff4.setContent(html_89d2c3c8b0aea03c834a2c03487626db);
+            
+        
+
+        marker_e30e6e92031703bd95b546ae8e68226a.bindPopup(popup_4949587d7d295b2fbd72531d5f1a3ff4)
+        ;
+
+        
+    
+    
+                marker_e30e6e92031703bd95b546ae8e68226a.setIcon(icon_fbba12f1942309cb70755b9f1b1397a8);
+            
+    
+            var marker_c329cc6b4aa4745c55d1fdef4230eb2d = L.marker(
+                [21.6992785, -158.003842],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_ad347af67b237729ce1b9c44743aea39 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f7557b1a6d87f5a0507af7c1367aa541 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_79412474a1d42ab94c7bb18af066ea02 = $(`<div id="html_79412474a1d42ab94c7bb18af066ea02" style="width: 100.0%; height: 100.0%;">         <b>Swing rope</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 2         </div>`)[0];
+                popup_f7557b1a6d87f5a0507af7c1367aa541.setContent(html_79412474a1d42ab94c7bb18af066ea02);
+            
+        
+
+        marker_c329cc6b4aa4745c55d1fdef4230eb2d.bindPopup(popup_f7557b1a6d87f5a0507af7c1367aa541)
+        ;
+
+        
+    
+    
+                marker_c329cc6b4aa4745c55d1fdef4230eb2d.setIcon(icon_ad347af67b237729ce1b9c44743aea39);
+            
+    
+            var marker_bb8c3f6131554f35dbe56e412a93fde1 = L.marker(
+                [21.3037936, -157.8567885],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_6d0384d1bad3c8b9310762e01f8ee549 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_af20a53bf612c42fe5d308c8c7a45fb7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b42949d9e3aa183608fe4e4905a9f6e5 = $(`<div id="html_b42949d9e3aa183608fe4e4905a9f6e5" style="width: 100.0%; height: 100.0%;">         <b>Hawaii Mission Houses Museum</b><br>         유형: museum<br>         접근성 점수: 12/20<br>         버스 정류장: 35개<br>         상업시설: 2개<br>         클러스터: 0         </div>`)[0];
+                popup_af20a53bf612c42fe5d308c8c7a45fb7.setContent(html_b42949d9e3aa183608fe4e4905a9f6e5);
+            
+        
+
+        marker_bb8c3f6131554f35dbe56e412a93fde1.bindPopup(popup_af20a53bf612c42fe5d308c8c7a45fb7)
+        ;
+
+        
+    
+    
+                marker_bb8c3f6131554f35dbe56e412a93fde1.setIcon(icon_6d0384d1bad3c8b9310762e01f8ee549);
+            
+    
+            var marker_f8c079976c027cb9f74caa547550cdef = L.marker(
+                [21.3680073, -157.7834821],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_ef1f0c3433cd1f38e545c029ca8211aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4ebcceca5bcb1601b873aa0c3e9a80c1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ead6ecad479cbd9544e0de93eb5352e5 = $(`<div id="html_ead6ecad479cbd9544e0de93eb5352e5" style="width: 100.0%; height: 100.0%;">         <b>Scenic Lookout</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_4ebcceca5bcb1601b873aa0c3e9a80c1.setContent(html_ead6ecad479cbd9544e0de93eb5352e5);
+            
+        
+
+        marker_f8c079976c027cb9f74caa547550cdef.bindPopup(popup_4ebcceca5bcb1601b873aa0c3e9a80c1)
+        ;
+
+        
+    
+    
+                marker_f8c079976c027cb9f74caa547550cdef.setIcon(icon_ef1f0c3433cd1f38e545c029ca8211aa);
+            
+    
+            var marker_f9e6f2e51ccb984edbe14d2e95785b44 = L.marker(
+                [21.3650506, -157.7796515],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_9e991159d7b42869e906aa967b9988ea = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_29217040e3767a7dcb18d138f5048f48 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_901b9a0fcdd06c1bccd97cbb0757b163 = $(`<div id="html_901b9a0fcdd06c1bccd97cbb0757b163" style="width: 100.0%; height: 100.0%;">         <b>Scenic Lookout</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_29217040e3767a7dcb18d138f5048f48.setContent(html_901b9a0fcdd06c1bccd97cbb0757b163);
+            
+        
+
+        marker_f9e6f2e51ccb984edbe14d2e95785b44.bindPopup(popup_29217040e3767a7dcb18d138f5048f48)
+        ;
+
+        
+    
+    
+                marker_f9e6f2e51ccb984edbe14d2e95785b44.setIcon(icon_9e991159d7b42869e906aa967b9988ea);
+            
+    
+            var marker_532b31dbacaffe0fb42c295af91d9ca6 = L.marker(
+                [21.395697, -157.742141],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_765f8466433105b243eb21c785d4b1fc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_03fff955c9d27e0b8e0dc7b52426dc98 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_deadea616c94526550eeff549a8bbd32 = $(`<div id="html_deadea616c94526550eeff549a8bbd32" style="width: 100.0%; height: 100.0%;">         <b>Manoa Chocolate Company</b><br>         유형: attraction<br>         접근성 점수: 20/20<br>         버스 정류장: 16개<br>         상업시설: 13개<br>         클러스터: 4         </div>`)[0];
+                popup_03fff955c9d27e0b8e0dc7b52426dc98.setContent(html_deadea616c94526550eeff549a8bbd32);
+            
+        
+
+        marker_532b31dbacaffe0fb42c295af91d9ca6.bindPopup(popup_03fff955c9d27e0b8e0dc7b52426dc98)
+        ;
+
+        
+    
+    
+                marker_532b31dbacaffe0fb42c295af91d9ca6.setIcon(icon_765f8466433105b243eb21c785d4b1fc);
+            
+    
+            var marker_009eb0da181b4c835a55335e22e9210f = L.marker(
+                [21.67262, -157.946667],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_9a060e316caa825b0a1714c0242ec18f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c52ac97d0528de37b19193feb9a48be4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9a932084608f12e71736066ae5f37653 = $(`<div id="html_9a932084608f12e71736066ae5f37653" style="width: 100.0%; height: 100.0%;">         <b>CLIMB Works Keana Farms</b><br>         유형: attraction<br>         접근성 점수: 10/20<br>         버스 정류장: 7개<br>         상업시설: 0개<br>         클러스터: 2         </div>`)[0];
+                popup_c52ac97d0528de37b19193feb9a48be4.setContent(html_9a932084608f12e71736066ae5f37653);
+            
+        
+
+        marker_009eb0da181b4c835a55335e22e9210f.bindPopup(popup_c52ac97d0528de37b19193feb9a48be4)
+        ;
+
+        
+    
+    
+                marker_009eb0da181b4c835a55335e22e9210f.setIcon(icon_9a060e316caa825b0a1714c0242ec18f);
+            
+    
+            var marker_4227762cc3904adb7c6573dbb806d9aa = L.marker(
+                [21.5352657, -157.8475194],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_9a9038b5dcb92102cf00a163fab014a0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4b2578f659dc8561ad0a0168a610d828 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ccfb577267ef02999f99c726705eb65e = $(`<div id="html_ccfb577267ef02999f99c726705eb65e" style="width: 100.0%; height: 100.0%;">         <b>Jurassic Park flocking site</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 1         </div>`)[0];
+                popup_4b2578f659dc8561ad0a0168a610d828.setContent(html_ccfb577267ef02999f99c726705eb65e);
+            
+        
+
+        marker_4227762cc3904adb7c6573dbb806d9aa.bindPopup(popup_4b2578f659dc8561ad0a0168a610d828)
+        ;
+
+        
+    
+    
+                marker_4227762cc3904adb7c6573dbb806d9aa.setIcon(icon_9a9038b5dcb92102cf00a163fab014a0);
+            
+    
+            var marker_2c40bfd96af01b46b825c34843e81256 = L.marker(
+                [21.3241217, -157.8468658],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_a54bef0f57fec5ee4b0973df9b0956de = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_784a60b005adf9c281194929f1f859ea = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_009f9c540d2a89a1364064f1a3b67315 = $(`<div id="html_009f9c540d2a89a1364064f1a3b67315" style="width: 100.0%; height: 100.0%;">         <b>Kapena Falls Trailhead</b><br>         유형: attraction<br>         접근성 점수: 10/20<br>         버스 정류장: 23개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_784a60b005adf9c281194929f1f859ea.setContent(html_009f9c540d2a89a1364064f1a3b67315);
+            
+        
+
+        marker_2c40bfd96af01b46b825c34843e81256.bindPopup(popup_784a60b005adf9c281194929f1f859ea)
+        ;
+
+        
+    
+    
+                marker_2c40bfd96af01b46b825c34843e81256.setIcon(icon_a54bef0f57fec5ee4b0973df9b0956de);
+            
+    
+            var marker_c114a9bdeb55f295e1bac2b493cd5c48 = L.marker(
+                [21.25962, -157.7079055],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_ad703705685e4069079e6e6ddb11ff2d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ea1db75e2734131eb111c7c4e659b1c4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_16f352a6d651a99b96164eb3216131dd = $(`<div id="html_16f352a6d651a99b96164eb3216131dd" style="width: 100.0%; height: 100.0%;">         <b>Spitting Cave</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_ea1db75e2734131eb111c7c4e659b1c4.setContent(html_16f352a6d651a99b96164eb3216131dd);
+            
+        
+
+        marker_c114a9bdeb55f295e1bac2b493cd5c48.bindPopup(popup_ea1db75e2734131eb111c7c4e659b1c4)
+        ;
+
+        
+    
+    
+                marker_c114a9bdeb55f295e1bac2b493cd5c48.setIcon(icon_ad703705685e4069079e6e6ddb11ff2d);
+            
+    
+            var marker_6c2734fae2d83cb936d2279c0f133c33 = L.marker(
+                [21.3241844, -157.7416941],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_15c689c7b1a791db52cd50af4c3f8470 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d89c32fdeb7fdbad671639b843d45add = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a64c44bf94ad23b721459d9d67271dc8 = $(`<div id="html_a64c44bf94ad23b721459d9d67271dc8" style="width: 100.0%; height: 100.0%;">         <b>The point at the end of the trail</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 4         </div>`)[0];
+                popup_d89c32fdeb7fdbad671639b843d45add.setContent(html_a64c44bf94ad23b721459d9d67271dc8);
+            
+        
+
+        marker_6c2734fae2d83cb936d2279c0f133c33.bindPopup(popup_d89c32fdeb7fdbad671639b843d45add)
+        ;
+
+        
+    
+    
+                marker_6c2734fae2d83cb936d2279c0f133c33.setIcon(icon_15c689c7b1a791db52cd50af4c3f8470);
+            
+    
+            var marker_66ec4a94e177365e6ee0cbba17a2e11b = L.marker(
+                [21.555958, -158.249426],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_12546e084870df00daff42b0d1989031 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5c2946ff61d53d0f14aa9a0f05973e3e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ba5339b641d3819b5162ec8b71955f1e = $(`<div id="html_ba5339b641d3819b5162ec8b71955f1e" style="width: 100.0%; height: 100.0%;">         <b>Heart Shaped Rock Hole</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 3         </div>`)[0];
+                popup_5c2946ff61d53d0f14aa9a0f05973e3e.setContent(html_ba5339b641d3819b5162ec8b71955f1e);
+            
+        
+
+        marker_66ec4a94e177365e6ee0cbba17a2e11b.bindPopup(popup_5c2946ff61d53d0f14aa9a0f05973e3e)
+        ;
+
+        
+    
+    
+                marker_66ec4a94e177365e6ee0cbba17a2e11b.setIcon(icon_12546e084870df00daff42b0d1989031);
+            
+    
+            var marker_da04ac452ba105a18426bfae2e38a63a = L.marker(
+                [21.5071765, -157.8456919],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_dabecdaefc24cf93c63e22b69ddc0a90 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_990929f29d719b37655c626d9aa8f0fb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_094fab2ea876d95cde5fc5e215bd9912 = $(`<div id="html_094fab2ea876d95cde5fc5e215bd9912" style="width: 100.0%; height: 100.0%;">         <b>Secret Island</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 1         </div>`)[0];
+                popup_990929f29d719b37655c626d9aa8f0fb.setContent(html_094fab2ea876d95cde5fc5e215bd9912);
+            
+        
+
+        marker_da04ac452ba105a18426bfae2e38a63a.bindPopup(popup_990929f29d719b37655c626d9aa8f0fb)
+        ;
+
+        
+    
+    
+                marker_da04ac452ba105a18426bfae2e38a63a.setIcon(icon_dabecdaefc24cf93c63e22b69ddc0a90);
+            
+    
+            var marker_da5704f96c7db24c444bf1395fa69eb3 = L.marker(
+                [21.4089707, -157.8217246],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_73aa4902bf7421504d74980e73e2d7aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bd2bdf178e375b1aa199d6ad5faa1e4d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0e6a4d695fc10373ed93ddea147ae54d = $(`<div id="html_0e6a4d695fc10373ed93ddea147ae54d" style="width: 100.0%; height: 100.0%;">         <b>Start Stairway to heaven</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 1         </div>`)[0];
+                popup_bd2bdf178e375b1aa199d6ad5faa1e4d.setContent(html_0e6a4d695fc10373ed93ddea147ae54d);
+            
+        
+
+        marker_da5704f96c7db24c444bf1395fa69eb3.bindPopup(popup_bd2bdf178e375b1aa199d6ad5faa1e4d)
+        ;
+
+        
+    
+    
+                marker_da5704f96c7db24c444bf1395fa69eb3.setIcon(icon_73aa4902bf7421504d74980e73e2d7aa);
+            
+    
+            var marker_5f7c025207ced13b12a2776abea7ab20 = L.marker(
+                [21.2828698, -157.8382954],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_a2ad4429ed002ff0c86c81e3e06fa149 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_97fd5ea0a727f14747e813fc6b89e36d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f158cb6ccea6ce6eacc4a11a1876a7f9 = $(`<div id="html_f158cb6ccea6ce6eacc4a11a1876a7f9" style="width: 100.0%; height: 100.0%;">         <b>Waikiki Starlight Luau</b><br>         유형: attraction<br>         접근성 점수: 20/20<br>         버스 정류장: 5개<br>         상업시설: 26개<br>         클러스터: 0         </div>`)[0];
+                popup_97fd5ea0a727f14747e813fc6b89e36d.setContent(html_f158cb6ccea6ce6eacc4a11a1876a7f9);
+            
+        
+
+        marker_5f7c025207ced13b12a2776abea7ab20.bindPopup(popup_97fd5ea0a727f14747e813fc6b89e36d)
+        ;
+
+        
+    
+    
+                marker_5f7c025207ced13b12a2776abea7ab20.setIcon(icon_a2ad4429ed002ff0c86c81e3e06fa149);
+            
+    
+            var marker_0ee4e024d7968ff6dd9f17834443cb13 = L.marker(
+                [21.2767788, -157.8289933],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_07ded8e6187200a373c0229d364aff2c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b3c0fd15525791950e7f140868b08395 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e483535457ae649e338efa06cfc9141e = $(`<div id="html_e483535457ae649e338efa06cfc9141e" style="width: 100.0%; height: 100.0%;">         <b>Aha'aina Luau</b><br>         유형: attraction<br>         접근성 점수: 20/20<br>         버스 정류장: 11개<br>         상업시설: 24개<br>         클러스터: 0         </div>`)[0];
+                popup_b3c0fd15525791950e7f140868b08395.setContent(html_e483535457ae649e338efa06cfc9141e);
+            
+        
+
+        marker_0ee4e024d7968ff6dd9f17834443cb13.bindPopup(popup_b3c0fd15525791950e7f140868b08395)
+        ;
+
+        
+    
+    
+                marker_0ee4e024d7968ff6dd9f17834443cb13.setIcon(icon_07ded8e6187200a373c0229d364aff2c);
+            
+    
+            var marker_737cea9d01637f30a8caeee8897c80b0 = L.marker(
+                [21.280686, -157.8348667],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_0f9bace1fa1ac2a00fe920e711f6fa98 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3f8be7ace7a5443c416146f30dd06d30 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_03987f43835fa83ba94d61e35aa0c456 = $(`<div id="html_03987f43835fa83ba94d61e35aa0c456" style="width: 100.0%; height: 100.0%;">         <b>Hale Koa Luau</b><br>         유형: attraction<br>         접근성 점수: 16/20<br>         버스 정류장: 10개<br>         상업시설: 6개<br>         클러스터: 0         </div>`)[0];
+                popup_3f8be7ace7a5443c416146f30dd06d30.setContent(html_03987f43835fa83ba94d61e35aa0c456);
+            
+        
+
+        marker_737cea9d01637f30a8caeee8897c80b0.bindPopup(popup_3f8be7ace7a5443c416146f30dd06d30)
+        ;
+
+        
+    
+    
+                marker_737cea9d01637f30a8caeee8897c80b0.setIcon(icon_0f9bace1fa1ac2a00fe920e711f6fa98);
+            
+    
+            var marker_38805a2dc1115a82a5de98b50c01a6f9 = L.marker(
+                [21.5928242, -158.1046558],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_af02cfac5a1dc5d196beb58ea7c2ac4c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f91c7742c4587b1e3fc2dc4214cfe8ec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ee062fac58c935cbad4d3e99866479a5 = $(`<div id="html_ee062fac58c935cbad4d3e99866479a5" style="width: 100.0%; height: 100.0%;">         <b>One Ocean Diving</b><br>         유형: attraction<br>         접근성 점수: 14/20<br>         버스 정류장: 11개<br>         상업시설: 4개<br>         클러스터: 2         </div>`)[0];
+                popup_f91c7742c4587b1e3fc2dc4214cfe8ec.setContent(html_ee062fac58c935cbad4d3e99866479a5);
+            
+        
+
+        marker_38805a2dc1115a82a5de98b50c01a6f9.bindPopup(popup_f91c7742c4587b1e3fc2dc4214cfe8ec)
+        ;
+
+        
+    
+    
+                marker_38805a2dc1115a82a5de98b50c01a6f9.setIcon(icon_af02cfac5a1dc5d196beb58ea7c2ac4c);
+            
+    
+            var marker_c070642372227b46dc71fe911fd7cfbf = L.marker(
+                [21.3135322, -157.8227636],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_b71713bf390b18596fb7c34e3a87cf3c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9b083eec571aff898d1bbf939f919459 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0e7755b7dff9fc3c9ea00dc16412dd6a = $(`<div id="html_0e7755b7dff9fc3c9ea00dc16412dd6a" style="width: 100.0%; height: 100.0%;">         <b>Scenic View</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_9b083eec571aff898d1bbf939f919459.setContent(html_0e7755b7dff9fc3c9ea00dc16412dd6a);
+            
+        
+
+        marker_c070642372227b46dc71fe911fd7cfbf.bindPopup(popup_9b083eec571aff898d1bbf939f919459)
+        ;
+
+        
+    
+    
+                marker_c070642372227b46dc71fe911fd7cfbf.setIcon(icon_b71713bf390b18596fb7c34e3a87cf3c);
+            
+    
+            var marker_609121f81891ae11bbb84b4ef25360c4 = L.marker(
+                [21.5323702, -157.8492923],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_c430f91c7932dcdee8929b351d83ea2c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_de80a2cdae1a17bb51b45f4db4ea4cd0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3ec950ad378a4ddf17b5e73eef795d15 = $(`<div id="html_3ec950ad378a4ddf17b5e73eef795d15" style="width: 100.0%; height: 100.0%;">         <b>Godzilla footprints</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 1         </div>`)[0];
+                popup_de80a2cdae1a17bb51b45f4db4ea4cd0.setContent(html_3ec950ad378a4ddf17b5e73eef795d15);
+            
+        
+
+        marker_609121f81891ae11bbb84b4ef25360c4.bindPopup(popup_de80a2cdae1a17bb51b45f4db4ea4cd0)
+        ;
+
+        
+    
+    
+                marker_609121f81891ae11bbb84b4ef25360c4.setIcon(icon_c430f91c7932dcdee8929b351d83ea2c);
+            
+    
+            var marker_202654460e377a57326fafb6f724b5ae = L.marker(
+                [21.5307269, -157.848707],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_a8e95fb8c4d2557181f212694affd76c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f3fcd999c4ad7c9fa7a8a7d0527384fe = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1745c8d0dab97207a8c1b8d67b795f0a = $(`<div id="html_1745c8d0dab97207a8c1b8d67b795f0a" style="width: 100.0%; height: 100.0%;">         <b>Kong: Skull Island boneyard</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 1         </div>`)[0];
+                popup_f3fcd999c4ad7c9fa7a8a7d0527384fe.setContent(html_1745c8d0dab97207a8c1b8d67b795f0a);
+            
+        
+
+        marker_202654460e377a57326fafb6f724b5ae.bindPopup(popup_f3fcd999c4ad7c9fa7a8a7d0527384fe)
+        ;
+
+        
+    
+    
+                marker_202654460e377a57326fafb6f724b5ae.setIcon(icon_a8e95fb8c4d2557181f212694affd76c);
+            
+    
+            var marker_4da65c4ca49714ba65e478361b5f8b2f = L.marker(
+                [21.5249414, -157.8593222],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_fe62a9a62793032dccc2dfcca279bee2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_50ccbb8d952aa12b56f5b6720e55646d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_66dedb59ea59219c0d03defaeabd03de = $(`<div id="html_66dedb59ea59219c0d03defaeabd03de" style="width: 100.0%; height: 100.0%;">         <b>Jurassic World raptor paddock</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 1         </div>`)[0];
+                popup_50ccbb8d952aa12b56f5b6720e55646d.setContent(html_66dedb59ea59219c0d03defaeabd03de);
+            
+        
+
+        marker_4da65c4ca49714ba65e478361b5f8b2f.bindPopup(popup_50ccbb8d952aa12b56f5b6720e55646d)
+        ;
+
+        
+    
+    
+                marker_4da65c4ca49714ba65e478361b5f8b2f.setIcon(icon_fe62a9a62793032dccc2dfcca279bee2);
+            
+    
+            var marker_6aa43cf7457568e5820249c80ec43a5a = L.marker(
+                [21.5257608, -157.8609992],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_a1300ba1702109037b5e04945a21832c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_84ecd192728eac7a75969e1808249785 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d7f933de6558021fe8122f07dbfe8c4b = $(`<div id="html_d7f933de6558021fe8122f07dbfe8c4b" style="width: 100.0%; height: 100.0%;">         <b>Jurassic World radio tower bunker (escape hatch)</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 1         </div>`)[0];
+                popup_84ecd192728eac7a75969e1808249785.setContent(html_d7f933de6558021fe8122f07dbfe8c4b);
+            
+        
+
+        marker_6aa43cf7457568e5820249c80ec43a5a.bindPopup(popup_84ecd192728eac7a75969e1808249785)
+        ;
+
+        
+    
+    
+                marker_6aa43cf7457568e5820249c80ec43a5a.setIcon(icon_a1300ba1702109037b5e04945a21832c);
+            
+    
+            var marker_be3b6434fa9d20f672c10af856f4acd3 = L.marker(
+                [21.5278825, -157.8604376],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_86a700a2273a9f7c92d8f3be9438bc1e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_632de40110c73b8a510d3a15066f4403 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_27af4ca706a7af323fdcb902ae910e0d = $(`<div id="html_27af4ca706a7af323fdcb902ae910e0d" style="width: 100.0%; height: 100.0%;">         <b>Jurassic World radio tower bunker (entrance)</b><br>         유형: attraction<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 1         </div>`)[0];
+                popup_632de40110c73b8a510d3a15066f4403.setContent(html_27af4ca706a7af323fdcb902ae910e0d);
+            
+        
+
+        marker_be3b6434fa9d20f672c10af856f4acd3.bindPopup(popup_632de40110c73b8a510d3a15066f4403)
+        ;
+
+        
+    
+    
+                marker_be3b6434fa9d20f672c10af856f4acd3.setIcon(icon_86a700a2273a9f7c92d8f3be9438bc1e);
+            
+    
+            var marker_f1f33747f28f4285179fbf637a2af677 = L.marker(
+                [21.3344044, -157.804079],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_5a01f840ad267f8b849c3493539b2e9e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_66e81222d86c09b1406e6efdb374233a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_abd42b42d40279520224bfd45fafaaa7 = $(`<div id="html_abd42b42d40279520224bfd45fafaaa7" style="width: 100.0%; height: 100.0%;">         <b>Inspiration Point</b><br>         유형: viewpoint<br>         접근성 점수: 0/20<br>         버스 정류장: 0개<br>         상업시설: 0개<br>         클러스터: 0         </div>`)[0];
+                popup_66e81222d86c09b1406e6efdb374233a.setContent(html_abd42b42d40279520224bfd45fafaaa7);
+            
+        
+
+        marker_f1f33747f28f4285179fbf637a2af677.bindPopup(popup_66e81222d86c09b1406e6efdb374233a)
+        ;
+
+        
+    
+    
+                marker_f1f33747f28f4285179fbf637a2af677.setIcon(icon_5a01f840ad267f8b849c3493539b2e9e);
+            
+    
+            var marker_e94368b6f0a9b1f3dc0b7ce42245b0ce = L.marker(
+                [21.3324639, -157.9239712],
+                {
+}
+            ).addTo(map_1750d77ee241df90d687904c340b1131);
+        
+    
+            var icon_08102a04a889549c17cd9814d8975ea4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b508f4be5b20ac68568c76de4a5fd7eb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_708fd8f656fa4dc768bdde90608ab122 = $(`<div id="html_708fd8f656fa4dc768bdde90608ab122" style="width: 100.0%; height: 100.0%;">         <b>CB Lansing Garden</b><br>         유형: attraction<br>         접근성 점수: 16/20<br>         버스 정류장: 5개<br>         상업시설: 6개<br>         클러스터: 0         </div>`)[0];
+                popup_b508f4be5b20ac68568c76de4a5fd7eb.setContent(html_708fd8f656fa4dc768bdde90608ab122);
+            
+        
+
+        marker_e94368b6f0a9b1f3dc0b7ce42245b0ce.bindPopup(popup_b508f4be5b20ac68568c76de4a5fd7eb)
+        ;
+
+        
+    
+    
+                marker_e94368b6f0a9b1f3dc0b7ce42245b0ce.setIcon(icon_08102a04a889549c17cd9814d8975ea4);
+            
+</script>
+</html>
